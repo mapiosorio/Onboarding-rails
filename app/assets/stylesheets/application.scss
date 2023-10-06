@@ -1,3 +1,46 @@
+@import 'custom_variables.scss';
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
+* {
+  font-family: 'poppins';
+  text-decoration: none !important;
+}
+
+.bg-primary-gradient {
+  background: linear-gradient(46.99deg, $primary -4.4%, #62D9FF 120.42%);
+}
+
+.skewY-10deg {
+  transform: skewY(10deg);
+}
+
+.skewY-n10deg {
+  transform: skewY(-10deg);
+}
+
+.top-n12 {
+  top: -12%;
+}
+
+.letter-spacing-n1px {
+  letter-spacing: -1px;
+}
+
+.line-height-130 {
+  line-height: 130%;
+}
+
+@include media-breakpoint-up(lg) {
+  .fs-lg-2 {
+    font-size: 35px;
+  }
+
+  .fw-lg-medium {
+    font-weight: 500 !important;
+  }
+
+  .fw-lg-normal {
+    font-weight: 400 !important;
+  }
+}
