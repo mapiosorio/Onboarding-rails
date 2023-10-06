@@ -1,0 +1,25 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+@font-face {
+  font-family: 'poppins';
+  src: url('/assets/fonts/poppins.ttf');
+}
+
+* {
+  font-family: 'poppins' !important;
+}
+
+// .bg-primary-gradient {
+//   background-color: linear-gradient(46.99deg, blue -4.4%, #62D9FF 120.42%);
+// }
+
+
+// .color {
+//   color: #7D7D7D80;
+// }
+.olaaaaa {
+  background: linear-gradient(46.99deg, #0F58B7 -4.4%, #62D9FF 120.42%);
+}
+
+
