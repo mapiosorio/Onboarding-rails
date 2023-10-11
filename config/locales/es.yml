@@ -1,0 +1,28 @@
+es:
+  title:
+    line1: "Comienza a"
+    line2: "simplificar tus"
+    line3: "acciones, "
+    line4: "aquí."
+  info:
+    line1: "En nuestra plataforma web vas a"
+    line2: "encontrar todo lo que estás buscando."
+  welcome: "¡Bienvenido a Plan IT!"
+  complete_info: "Por favor, complete su información personal para crear un usuario propio."
+  have_account: "¿Ya tenés una cuenta?"
+  help: "¿Necesitás ayuda?"
+  links:
+    login: "Inicia sesión aquí."
+    register: "¡Regístrate aquí!"
+  form_fields:
+    name: "Nombre"
+    surname: "Apellido"
+    email: "Email"
+    password: "Contraseña"
+    company: "Nombre de su empresa"
+    submit_sign_in: "REGISTRARSE"
+  footer:
+    number: "Tel: +598 96593615"
+    email: "info@planit.com.uy"
+    rights: "PlanIT, 2021 - All rights reserved"
+
