@@ -8,12 +8,16 @@ es:
     our_web: "En nuestra plataforma web vas a"
     find: "encontrar todo lo que estás buscando."
   welcome: "¡Bienvenido a Plan IT!"
+  greeting: "¡Hola, otra vez!"
   complete_info: "Por favor, complete su información personal para crear un usuario propio."
+  confirm_info: "Por favor, confirma tu información para ingresar a Plan IT."
   have_account: "¿Ya tenés una cuenta?"
+  not_have_account: "¿No tienes una cuenta aún?"
   help: "¿Necesitás ayuda?"
   links:
     login: "Inicia sesión aquí."
     register: "¡Regístrate aquí!"
+    forgot_password: "¿Olvidaste tu contraseña?"
   form_fields:
     name: "Nombre"
     surname: "Apellido"
@@ -21,6 +25,8 @@ es:
     password: "Contraseña"
     company: "Nombre de su empresa"
     submit_sign_in: "REGISTRARSE"
+    remember_box: "Recordar mi información"
+    submit_login: "INICIAR SESIÓN"
   footer:
     number: "Tel: +598 96593615"
     email: "info@planit.com.uy"
@@ -32,7 +38,7 @@ es:
         name: "Nombre"
         surname: "Apellido"
         password: "Contraseña"
-        email: "Email"
+        email:
     errors:
       models:
         user:

@@ -1,19 +1,11 @@
 <div class="row">
-  <div class="d-none d-lg-flex flex-column col-lg-6 bg-primary-gradient position-relative">
-    <div class="d-flex flex-column my-5 ms-5 ps-5">
-      <div class="my-5 ms-4 pb-3"><%= image_tag('logo_secondary_big.png', alt: 'PlanIT logo') %></div>
-      <h1 class="text-light mb-5 fw-semibold display-5 ms-4"><%= t('title.start') %><br> <%= t('title.simplify') %><br><%= t('title.actions') %><span class="text-primary"><%= t('title.here') %></span></h1>
-      <p class="text-light letter-spacing-n1px line-height-130 fs-5 ms-4"><%= t('info.our_web') %><br> <%= t('info.find') %></p>
-    </div>
-    <div class="mt-5"><%= image_tag('computer.png', alt: 'computer') %></div>
-  </div>
+
+  <%= render 'devise/shared/computer' %>
+
   <div class="position-relative col-lg-6">
-    <div class="d-flex d-lg-none skew-y-10deg w-100 top-n12 h-25 bg-primary-gradient rounded-end-5 position-absolute mb-5 align-items-end">
-      <div class="skew-y-n10deg position-relative d-flex mx-4 pb-4 pb-md-5 mb-4 mb-sm-5 justify-content-between w-100">
-        <%= image_tag('logo_secondary.png', alt: 'PlanIT logo') %>
-        <%= image_tag('menu.png', alt: 'navbar') %>
-      </div>
-    </div>
+
+    <%= render 'devise/shared/navbar'%>
+
     <div class="ms-4 mt-5 pt-5 d-flex flex-column justify-content-between mx-lg-5 px-lg-5">
       <h2 class="mt-5 mt-lg-3 pt-5 fw-lg-medium fw-semibold fs-lg-2 display-3 line-height-130 mb-3 mb-lg-5"><%= t('welcome') %></h2>
       <p class="m-0 letter-spacing-n1px line-height-130 fs-5"><%= t('complete_info') %><p>
@@ -57,32 +49,10 @@
         </div>
       <% end %>
 
-      <div class="d-flex d-lg-none flex-column justify-content-between w-100 mt-5 pt-5">
-        <div class="d-flex mb-5">
-          <div><%= image_tag('planit_logo.png', alt: 'PlanIt logo') %></div>
-        </div>
-        <div class="d-flex gap-lg-2 justify-content-between mb-2 text-info">
-          <p class="fw-light d-flex m-0"><%= t('footer.email') %></p>
-          <p class="fw-light m-0"><%= t('footer.number') %></p>
-        </div>
-        <div class="border-bottom border-info rounded w-100 d-flex m-0"></div>
-        <div class="d-flex justify-content-between mt-2">
-          <p class="fw-light text-info"><%= t('footer.rights') %></p>
-          <div class="d-flex flex-row gap-3">
-            <div><%= image_tag('facebook.png', alt: 'Facebook logo') %></div>
-            <div><%= image_tag('linkedin.png', alt: 'Linkedin logo') %></div>
-            <div><%= image_tag('twitter.png', alt: 'Twitter logo') %></div>
-            <div><%= image_tag('instagram.png', alt: 'Instagram logo') %></div>
-          </div>
-        </div>
-      </div>
-      <div class="d-none d-lg-flex position-fixed bottom-0 end-0">
-        <div class="d-flex align-items-center">
-          <button class="d-flex align-items-center gap-1 bg-primary text-light border-0 rounded-3 ps-5 pe-4 py-1 position-relative"><%= t('help') %></button>
-          <div class="display-6 position-absolute text-light ms-4">•</div>
-        </div>
-        <div class="shadow px-4 py-3 rounded-3 m-3 d-flex"><%= image_tag('logo.png', alt: 'Logo') %></div>
-      </div>
+      <%= render 'devise/shared/footer' %>
+
+      <%= render 'devise/shared/help' %>
+
     </div>
   </div>
 </div>
