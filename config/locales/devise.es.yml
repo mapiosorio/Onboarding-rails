@@ -61,15 +61,3 @@ es:
       not_saved:
         one: "Ha ocurrido 1 error:"
         other: "Han ocurrido %{count} errores:"
-  activerecord:
-    errors:
-      models:
-        user:
-          attributes:
-            email:
-              blank: "no puede estar en blanco"
-              taken:
-              invalid:
-            password:
-              blank: "no puede estar en blanco"
-              confirmation:

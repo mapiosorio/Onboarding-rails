@@ -25,4 +25,26 @@ es:
     number: "Tel: +598 96593615"
     email: "info@planit.com.uy"
     rights: "PlanIT, 2021 - All rights reserved"
-
+  activerecord:
+    attributes:
+      user:
+        company: "Empresa"
+        name: "Nombre"
+        surname: "Apellido"
+        password: "Contraseña"
+        email:
+    errors:
+      models:
+        user:
+          attributes:
+            company:
+              blank: "no puede estar en blanco"
+            surname:
+              blank: "no puede estar en blanco"
+            name:
+              blank: "no puede estar en blanco"
+            email:
+              blank: "no puede estar en blanco"
+            password:
+              blank: "no puede estar en blanco"
+              too_short : "es demasiada corta"
