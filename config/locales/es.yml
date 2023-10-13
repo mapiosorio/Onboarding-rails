@@ -1,12 +1,12 @@
 es:
   title:
-    line1: "Comienza a"
-    line2: "simplificar tus"
-    line3: "acciones, "
-    line4: "aquí."
+    start: "Comienza a"
+    simplify: "simplificar tus"
+    actions: "acciones, "
+    here: "aquí."
   info:
-    line1: "En nuestra plataforma web vas a"
-    line2: "encontrar todo lo que estás buscando."
+    our_web: "En nuestra plataforma web vas a"
+    find: "encontrar todo lo que estás buscando."
   welcome: "¡Bienvenido a Plan IT!"
   complete_info: "Por favor, complete su información personal para crear un usuario propio."
   have_account: "¿Ya tenés una cuenta?"
@@ -32,7 +32,7 @@ es:
         name: "Nombre"
         surname: "Apellido"
         password: "Contraseña"
-        email:
+        email: "Email"
     errors:
       models:
         user:
