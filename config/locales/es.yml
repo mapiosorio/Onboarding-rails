@@ -35,7 +35,7 @@ es:
     rights: "PlanIT, 2021 - All rights reserved"
   reset_password:
     request_link: "Alguien ha solicitado cambiar su contraseña. Puedes hacerlo a través del siguiente enlace."
-    link: "Cambiar mi contraseña"
+    link: " Cambiar mi contraseña"
     ignore: "Si no solicitó esto, ignore este correo electrónico."
     conditions: "Su contraseña no cambiará hasta que acceda al enlace de arriba y cree una nueva."
   change_password:
@@ -68,6 +68,7 @@ es:
             name:
               blank: "no puede estar en blanco"
             email:
+              taken: "ya está en uso"
               blank: "no puede estar en blanco"
             password:
               blank: "no puede estar en blanco"
