@@ -1,0 +1,50 @@
+es:
+  title:
+    start: "Comienza a"
+    simplify: "simplificar tus"
+    actions: "acciones, "
+    here: "aquí."
+  info:
+    our_web: "En nuestra plataforma web vas a"
+    find: "encontrar todo lo que estás buscando."
+  welcome: "¡Bienvenido a Plan IT!"
+  complete_info: "Por favor, complete su información personal para crear un usuario propio."
+  have_account: "¿Ya tenés una cuenta?"
+  help: "¿Necesitás ayuda?"
+  links:
+    login: "Inicia sesión aquí."
+    register: "¡Regístrate aquí!"
+  form_fields:
+    name: "Nombre"
+    surname: "Apellido"
+    email: "Email"
+    password: "Contraseña"
+    company: "Nombre de su empresa"
+    submit_sign_in: "REGISTRARSE"
+  footer:
+    number: "Tel: +598 96593615"
+    email: "info@planit.com.uy"
+    rights: "PlanIT, 2021 - All rights reserved"
+  activerecord:
+    attributes:
+      user:
+        company: "Empresa"
+        name: "Nombre"
+        surname: "Apellido"
+        password: "Contraseña"
+        email: "Email"
+    errors:
+      models:
+        user:
+          attributes:
+            company:
+              blank: "no puede estar en blanco"
+            surname:
+              blank: "no puede estar en blanco"
+            name:
+              blank: "no puede estar en blanco"
+            email:
+              blank: "no puede estar en blanco"
+            password:
+              blank: "no puede estar en blanco"
+              too_short : "es demasiada corta"
