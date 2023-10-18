@@ -1,26 +1,48 @@
-<h2>Log in</h2>
+<div class="row">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <%= render 'devise/shared/computer'%>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+  <div class="position-relative col-lg-6">
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+    <%= render 'devise/shared/navbar'%>
+
+    <div class="ms-4 mt-5 pt-5 d-flex flex-column justify-content-between mx-lg-5 px-lg-5">
+      <h2 class="mt-5 pt-5 fw-lg-medium fw-semibold fs-lg-2 display-3 line-height-130 mb-3 mb-lg-4"><%= t('greeting') %></h2>
+      <p class="m-0 letter-spacing-n1px line-height-130 fs-5 mb-4 mb-lg-5 pb-lg-3"><%= t('confirm_info') %><p>
+
+      <% if flash[:alert] %>
+        <p class="alert alert-danger"><%= flash[:alert] %></p>
+      <% end %>
+
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <%= f.label :email, t('form_fields.email'), class: 'fw-lg-normal fw-medium' %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'border-0 border-bottom border-dark w-100 shadow-none bg-transparent' %>
+        </div>
+
+        <div class="field my-4">
+          <%= f.label :password, t('form_fields.password'), class: 'fw-lg-normal fw-medium' %><br />
+          <%= f.password_field :password, autocomplete: 'current-password', class: 'border-0 border-bottom border-dark w-100 shadow-none bg-transparent'%>
+        </div>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field d-flex mb-5 pb-5 mt-lg-5 gap-2">
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me, t('form_fields.remember_box') %>
+          </div>
+        <% end %>
+
+        <div class="actions mb-3 d-flex justify-content-center w-100">
+          <%= f.submit t('form_fields.submit_login'), class: 'text-light bg-primary-gradient border-0 rounded w-100 py-1 shadow' %>
+        </div>
+      <% end %>
+      <p class="text-center m-0 text-info"><%= t('not_have_account') %></p>
+
+      <%= render 'devise/shared/links' %>
+
+      <%= render 'devise/shared/footer' %>
+
+      <%= render 'devise/shared/help' %>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
