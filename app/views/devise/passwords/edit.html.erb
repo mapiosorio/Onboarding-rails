@@ -5,7 +5,7 @@
   <div class="position-relative col-lg-6 mt-lg-5 pt-lg-5">
     <div class="ms-2 mt-3 mt-lg-5 pt-lg-5 d-flex flex-column mx-lg-5 px-lg-5">
       <div class="mx-4 px-1 mt-4">
-        <h2 class="mb-5"><%= t('change_password.tittle') %></h2>
+        <h2 class="mb-5"><%= t('change_password.title') %></h2>
 
         <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
           <%= render 'devise/shared/error_messages', resource: resource %>
@@ -13,12 +13,12 @@
 
           <div class="field mt-3">
             <%= f.label :password, t('change_password.new_password'), class: 'fw-lg-normal fw-medium' %><br />
-            <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'border-0 border-bottom border-dark w-100 bg-transparent' %>
+            <%= f.password_field :password, autofocus: true, autocomplete: 'new-password', class: 'border-0 border-bottom border-dark w-100 bg-transparent' %>
           </div>
 
           <div class="field mt-5">
             <%= f.label :password_confirmation, t('change_password.confirm_new_password'), class: 'fw-lg-normal fw-medium' %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'border-0 border-bottom border-dark w-100 bg-transparent' %>
+            <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'border-0 border-bottom border-dark w-100 bg-transparent' %>
           </div>
 
           <div class="actions mb-5 d-flex justify-content-center w-100 mt-5">

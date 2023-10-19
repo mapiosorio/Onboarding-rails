@@ -39,11 +39,11 @@ es:
     ignore: "Si no solicitó esto, ignore este correo electrónico."
     conditions: "Su contraseña no cambiará hasta que acceda al enlace de arriba y cree una nueva."
   change_password:
-    tittle: "Cambia tu contraseña"
+    title: "Cambia tu contraseña"
     new_password: "Nueva contraseña"
     confirm_new_password: "Confirma la nueva contraseña"
     submit: "Cambiar mi contraseña"
-    condition: "characters minimum"
+    condition: "caracteres mínimo"
     success: "Nos estamos comunicando con usted para notificarle que su contraseña ha sido cambiada."
   activerecord:
     attributes:

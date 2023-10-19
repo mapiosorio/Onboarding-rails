@@ -67,7 +67,7 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => '127.0.0.1', :port => 1025 }
+  config.action_mailer.smtp_settings = { address: '127.0.0.1', port: 1025 }
   config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = {:host =>'localhost:3000'}
+  config.action_mailer.default_url_options = { host: 'localhost:3000'}
 end
