@@ -15,6 +15,12 @@ es:
   have_account: "¿Ya tenés una cuenta?"
   not_have_account: "¿No tienes una cuenta aún?"
   help: "¿Necesitás ayuda?"
+  home:
+    navbar:
+     gifts: Regalos
+     catering: Catering
+     merchandising: merchandising
+     events: Eventos
   links:
     login: "Inicia sesión aquí."
     register: "¡Regístrate aquí!"
@@ -35,7 +41,7 @@ es:
     rights: "PlanIT, 2021 - All rights reserved"
   reset_password:
     request_link: "Alguien ha solicitado cambiar su contraseña. Puedes hacerlo a través del siguiente enlace."
-    link: "Cambiar mi contraseña"
+    link: " Cambiar mi contraseña"
     ignore: "Si no solicitó esto, ignore este correo electrónico."
     conditions: "Su contraseña no cambiará hasta que acceda al enlace de arriba y cree una nueva."
   change_password:

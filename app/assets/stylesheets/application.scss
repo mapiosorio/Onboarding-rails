@@ -31,6 +31,16 @@
   line-height: 130%;
 }
 
+.text-transparent {
+  color: transparent
+}
+
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+
 @include media-breakpoint-up(lg) {
   .fs-lg-2 {
     font-size: 35px;

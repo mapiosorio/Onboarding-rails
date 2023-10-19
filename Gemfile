@@ -9,6 +9,8 @@ gem 'faker'
 
 gem 'i18n'
 
+gem 'faker'
+
 gem 'simplecov', require: false, group: :test
 
 gem 'sassc-rails'
