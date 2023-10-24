@@ -53,8 +53,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_205136) do
     t.string "name"
     t.integer "price"
     t.bigint "supplier_id", null: false
+    t.bigint "category_id", null: false
+    t.float "rating"
+    t.boolean "sharing"
+    t.boolean "vegan"
+    t.boolean "sugar_free"
+    t.boolean "gluten_free"
+    t.boolean "picada"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["supplier_id"], name: "index_products_on_supplier_id"
   end
 
@@ -73,6 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_205136) do
     t.string "name", null: false
     t.string "surname", null: false
     t.string "company", null: false
+    t.string "position", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

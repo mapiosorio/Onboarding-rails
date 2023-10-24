@@ -35,6 +35,7 @@ es:
     remember_box: "Recordar mi información"
     submit_login: "INICIAR SESIÓN"
     change_password: "CAMBIAR CONTRASEÑA"
+    position: "Cargo en la empresa"
   footer:
     number: "Tel: +598 96593615"
     email: "info@planit.com.uy"

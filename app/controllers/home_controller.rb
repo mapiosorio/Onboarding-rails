@@ -4,7 +4,6 @@ class HomeController < ApplicationController
   def gifts
     @user = current_user
     @products = Product.all
-    @suppliers = Supplier.all
   end
 
   def catering
@@ -18,4 +17,9 @@ class HomeController < ApplicationController
   def events
     @user = current_user
   end
+end
+
+private
+def gift_params
+  params.require(:user).permit(:photo)
 end
