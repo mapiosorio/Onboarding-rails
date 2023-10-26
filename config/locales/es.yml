@@ -9,6 +9,7 @@ es:
     find: "encontrar todo lo que estás buscando."
   welcome: "¡Bienvenido a Plan IT!"
   greeting: "¡Hola, otra vez!"
+  hello: "Hola"
   complete_info: "Por favor, complete su información personal para crear un usuario propio."
   confirm_info: "Por favor, confirma tu información para ingresar a Plan IT."
   have_account: "¿Ya tenés una cuenta?"
@@ -27,10 +28,23 @@ es:
     submit_sign_in: "REGISTRARSE"
     remember_box: "Recordar mi información"
     submit_login: "INICIAR SESIÓN"
+    change_password: "CAMBIAR CONTRASEÑA"
   footer:
     number: "Tel: +598 96593615"
     email: "info@planit.com.uy"
     rights: "PlanIT, 2021 - All rights reserved"
+  reset_password:
+    request_link: "Alguien ha solicitado cambiar su contraseña. Puedes hacerlo a través del siguiente enlace."
+    link: "Cambiar mi contraseña"
+    ignore: "Si no solicitó esto, ignore este correo electrónico."
+    conditions: "Su contraseña no cambiará hasta que acceda al enlace de arriba y cree una nueva."
+  change_password:
+    title: "Cambia tu contraseña"
+    new_password: "Nueva contraseña"
+    confirm_new_password: "Confirma la nueva contraseña"
+    submit: "Cambiar mi contraseña"
+    condition: "caracteres mínimo"
+    success: "Nos estamos comunicando con usted para notificarle que su contraseña ha sido cambiada."
   activerecord:
     attributes:
       user:
@@ -43,6 +57,10 @@ es:
       models:
         user:
           attributes:
+            reset_password_token:
+              invalid: "no válido"
+            password_confirmation:
+              confirmation: "no coincide"
             company:
               blank: "no puede estar en blanco"
             surname:
