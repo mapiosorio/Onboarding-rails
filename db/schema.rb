@@ -55,11 +55,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_18_205136) do
     t.bigint "supplier_id", null: false
     t.bigint "category_id", null: false
     t.float "rating"
-    t.boolean "sharing"
-    t.boolean "vegan"
-    t.boolean "sugar_free"
-    t.boolean "gluten_free"
-    t.boolean "picada"
+    t.boolean "sharing", default: false
+    t.boolean "vegan", default: false
+    t.boolean "sugar_free", default: false
+    t.boolean "gluten_free", default: false
+    t.boolean "picada", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"

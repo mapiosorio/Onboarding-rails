@@ -15,12 +15,17 @@ es:
   have_account: "¿Ya tenés una cuenta?"
   not_have_account: "¿No tienes una cuenta aún?"
   help: "¿Necesitás ayuda?"
-  home:
-    navbar:
-     gifts: Regalos
-     catering: Catering
-     merchandising: merchandising
-     events: Eventos
+  home_page:
+    options_count: Más de 30 opciones
+    links:
+      sharing: Para compartir
+      vegan: Veganos/Vegetarianos
+      sugar_free: Sin azúcar
+      gluten_free: Sin Tacc
+      picadas: Picadas
+      default_order: Por defecto
+      asc_order: Precio ascendente
+      desc_order: Precio descendente
   links:
     login: "Inicia sesión aquí."
     register: "¡Regístrate aquí!"

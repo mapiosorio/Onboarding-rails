@@ -5,78 +5,33 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-Product.destroy_all
-Supplier.destroy_all
-
-
+4.times do
   Supplier.create(
-    name: 'Filipa'
+    name: Faker::Company.name
   )
-  Supplier.create(
-    name: 'La Petit Patisserie de Flor'
-  )
-
-
-5.times do
-  product = Product.create(
-    name: 'Mini Box Salada',
-    description: '...',
-    price: '495',
-    rating: '4.95',
-    vegan: true,
-  )
-
-  product.supplier = Supplier.find_by(name: 'Filipa')
-  product.category = Category.find_by(name: 'Regalos')
-  product.image.attach(io: File.open(Rails.root.join('app/assets/images/filipa_mini_box.png')), filename: 'filipa_mini_box.png')
-  product.save
-
-  product = Product.create(
-    name: 'Mini Box Dulce',
-    description: '...',
-    price: '150',
-    rating: '4.85',
-  )
-
-  product.supplier = Supplier.find_by(name: 'Filipa')
-  product.category = Category.find_by(name: 'Regalos')
-  product.image.attach(io: File.open(Rails.root.join('app/assets/images/filipa_mini_box_dulce.png')), filename: 'filipa_mini_box_dulce.png')
-  product.save
-
-  product = Product.create(
-    name: 'Lunch Box',
-    description: '...',
-    price: '495',
-    rating: '4.84',
-  )
-
-  product.supplier = Supplier.find_by(name: 'Filipa')
-  product.category = Category.find_by(name: 'Regalos')
-  product.image.attach(io: File.open(Rails.root.join('app/assets/images/filipa_lunch_box.png')), filename: 'filipa_lunch_box.png')
-  product.save
-
-  product = Product.create(
-    name: 'Desayuno Mini',
-    description: '...',
-    price: '800',
-    rating: '4.70'
-  )
-
-  product.supplier = Supplier.find_by(name: 'La Petit Patisserie de Flor')
-  product.category = Category.find_by(name: 'Regalos')
-  product.image.attach(io: File.open(Rails.root.join('app/assets/images/desayuno_mini.png')), filename: 'desayuno_mini.png')
-  product.save
-
-  product = Product.create(
-    name: 'Mini Box Dulce',
-    description: '...',
-    price: '150',
-    rating: '4.85',
-  )
-
-  product.supplier = Supplier.find_by(name: 'Filipa')
-  product.category = Category.find_by(name: 'Regalos')
-  product.image.attach(io: File.open(Rails.root.join('app/assets/images/filipa_mini_box_dulce.png')), filename: 'filipa_mini_box_dulce.png')
-  product.save
 end
 
+4.times do
+  Category.create(
+    name: Faker::Lorem.word
+  )
+end
+
+100.times do
+  product = Product.create(
+    name: Faker::Food.dish,
+    description: '...',
+    price: Faker::Commerce.price,
+    rating: Faker::Number.decimal(l_digits: 1, r_digits: 2),
+    vegan: Faker::Boolean.boolean,
+    sharing: Faker::Boolean.boolean,
+    gluten_free: Faker::Boolean.boolean,
+    sugar_free: Faker::Boolean.boolean,
+    picada: Faker::Boolean.boolean,
+  )
+
+  product.supplier = Supplier.all.sample
+  product.category = Category.all.sample
+  product.image.attach(io: File.open(Rails.root.join('app/assets/images/filipa_mini_box.png')), filename: 'filipa_mini_box.png')
+  product.save
+end
