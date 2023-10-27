@@ -5,9 +5,9 @@ ruby "3.0.0"
 
 gem 'devise'
 
-gem 'i18n'
-
 gem 'faker'
+
+gem 'i18n'
 
 gem 'simplecov', require: false, group: :test
 
