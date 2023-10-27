@@ -1,43 +1,69 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<%= render 'categories/shared/navbar' %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<div class="bg-custom-gray pt-5 mt-5">
+  <div class="mx-lg-5 px-lg-5 mx-3">
+    <h2 class="mt-lg-5 pt-lg-5 mb-lg-5"><%= t('personal_information')%></h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="bg-lg-custom-gray bg-white row position-relative rounded">
+      <div class="mx-lg-5 px-lg-5 mt-5">
+        <%= render "devise/shared/error_messages", resource: resource %>
+      </div>
+      <div class="mx-lg-5 px-lg-5 col-xl-4 col-lg-5">
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+        <div class="field pt-5 d-flex flex-column text-secondary">
+          <%= f.label :photo, 'Foto de perfil', class: 'fw-light fs-12px'%>
+          <%= f.file_field :photo, class:'bg-white border-0' %>
+        </div>
+
+        <div class="field mt-4 text-secondary">
+          <%= f.label :email, t('form_fields.email'), class: 'fw-light fs-12px' %><br />
+          <%= f.email_field :email, autocomplete: 'email', class: 'border-0 border-bottom border-dark w-100 bg-transparent text-secondary' %>
+        </div>
+
+        <div class="field mt-4 text-secondary">
+          <%= f.label :name, t('form_fields.name'), class: 'fw-light fs-12px' %>
+          <%= f.text_field :name, class: 'border-0 border-bottom border-dark w-100 bg-transparent text-secondary' %>
+        </div>
+
+        <div class="field mt-4 text-secondary">
+          <%= f.label :surname, t('form_fields.surname'), class: 'fw-light fs-12px' %><br />
+          <%= f.text_field :surname, class: 'border-0 border-bottom border-dark w-100 bg-transparent text-secondary' %>
+        </div>
+
+         <div class="field mt-4 text-secondary">
+          <%= f.label :phone_number, t('activerecord.attributes.user.phone_number'), class: 'fw-light fs-12px' %>
+          <%= f.text_field :phone_number, class: 'border-0 border-bottom border-dark w-100 bg-transparent text-secondary' %>
+        </div>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <% end %>
+
+        <div class="field mt-4 text-secondary">
+            <%= f.label :password, t('change_password.new_password'), class: 'fw-light fs-12px' %><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: 'border-0 border-bottom border-dark w-100 bg-transparent text-secondary' %>
+          </div>
+
+          <div class="field mt-4 text-secondary">
+            <%= f.label :password_confirmation, t('change_password.confirm_new_password'), class: 'fw-light fs-12px' %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'border-0 border-bottom border-dark w-100 bg-transparent text-secondary' %>
+          </div>
+
+          <div class="field mt-4 mb-5 pb-5 text-secondary">
+            <%= f.label :current_password, t('activerecord.attributes.user.current_password'), class: 'fw-light fs-12px' %> <i class="fw-light fs-12px">(Para confirmar los cambios)</i>
+            <p><%= f.password_field :current_password, autocomplete: "current-password", class: 'border-0 border-bottom border-dark w-100 bg-transparent text-secondary' %></p>
+          </div>
+
+
+          <div class="actions position-absolute position-lg-static top-0 end-0 m-lg-5 pe-lg-5 pt-lg-5 d-flex flex-column align-items-lg-end align-items-start gap-4 gap-lg-0 mb-5">
+            <%= f.submit "Editar información", class: 'border-0 bg-white bg-lg-custom-gray text-primary' %>
+            <%= button_to "Cerrar cuenta", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: 'border-0 bg-white text-primary bg-lg-custom-gray' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <%= render 'categories/shared/footer' %>
+    <%= render 'devise/shared/footer' %>
   </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</div>
