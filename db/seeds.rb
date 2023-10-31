@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+Category.destroy_all
+
 4.times do
   Provider.create(
     name: Faker::Company.name
@@ -35,3 +38,4 @@ end
   product.image.attach(io: File.open(Rails.root.join('app/assets/images/filipa_mini_box.png')), filename: 'filipa_mini_box.png')
   product.save
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
