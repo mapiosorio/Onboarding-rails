@@ -11,7 +11,9 @@ es:
   greeting: "¡Hola, otra vez!"
   categories: Categorias
   results: resultados
+  confirm_changes: Para confirmar los cambios
   hello: "Hola"
+  personal: Personal
   personal_information: Información personal
   complete_info: "Por favor, complete su información personal para crear un usuario propio."
   confirm_info: "Por favor, confirma tu información para ingresar a Plan IT."
@@ -46,6 +48,8 @@ es:
     login: "Inicia sesión aquí."
     register: "¡Regístrate aquí!"
     forgot_password: "¿Olvidaste tu contraseña?"
+    edit_information: Editar información
+    close_account: 'Cerrar cuenta'
   form_fields:
     name: "Nombre"
     surname: "Apellido"
@@ -57,6 +61,7 @@ es:
     submit_login: "INICIAR SESIÓN"
     change_password: "CAMBIAR CONTRASEÑA"
     position: "Cargo en la empresa"
+    profile_picture: Foto de perfil
   footer:
     number: "Tel: +598 96593615"
     email: "info@planit.com.uy"

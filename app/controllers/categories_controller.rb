@@ -18,12 +18,7 @@ class CategoriesController < ApplicationController
     render 'show'
   end
 
-  def filter
-    @user = current_user
-    @category = Category.find(params[:id])
-    @products = @category.products
-
-    @filter_params = params.permit(:sharing, :vegan, :sugar_free, :gluten_free, :picada)
+  private
 
   def apply_filters
     @filter_params = params.permit(:sharing, :vegan, :sugar_free, :gluten_free, :finger_food)

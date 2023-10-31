@@ -4,7 +4,7 @@
       <div class="mt-5"><%= image_tag('planit_logo.png', alt: 'PlanIt logo') %></div>
       <div class="d-flex flex-column justify-content-center">
         <nav class="navbar navbar-expand-lg d-flex flex-column mt-5 mt-lg-0 p-0">
-          <div class="">
+          <div>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -21,7 +21,7 @@
                     </li>
                   <% end %>
                   <div class="d-lg-none mt-3">
-                    <h5>Personal</h5>
+                    <h5><%= t('personal') %></h5>
                     <li class="nav-item fw-light pb-1"><%= t('navbar.dropdown.points') %></li>
                     <li class="nav-item fw-light pb-1"><%= link_to t('navbar.dropdown.account'), edit_user_registration_path, class: 'text-dark' %></li>
                    <li class="dropdown-item ps-0 fw-light"><%= t('navbar.dropdown.favourites') %></li>
@@ -54,17 +54,17 @@
       <% image_url = current_user.photo.attached? ? current_user.photo : 'default_profile_picture.jpeg' %>
       <%= image_tag(image_url, class: 'img-fluid rounded-circle default-profile-picture me-3', alt: 'Profile picture') %>
       <div class="d-flex flex-column">
-        <%= @user.name %>
-        <%= @user.surname %>
+        <%= current_user.name %>
+        <%= current_user.surname %>
         <div class="d-flex">
-          <p class="text-secondary m-0"><%= @user.position %></p>
+          <p class="text-secondary m-0"><%= current_user.position %></p>
           <div class="dropdown">
             <button class="btn fw-light dropdown-toggle p-0 ms-2 border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false"></button>
             <ul class="dropdown-menu px-3">
               <li class="dropdown-item ps-0 fw-light p-0">
                 <div class="d-flex justify-content-between align-self-end">
                   <div class="d-flex flex-column">
-                    <p class="m-0 p-0 text-transparent bg-primary-gradient bg-clip-text fw-medium fs-5">1300</p>
+                    <p class="m-0 p-0 text-transparent bg-primary-gradient bg-clip-text fw-medium fs-5"><%= t('navbar.dropdown.points_number') %></p>
                     <p class="mb-1 p-0"><%= t('navbar.dropdown.points') %></p>
                   </div>
                   <p class="text-primary p-0 m-0 d-flex align-self-end mb-1"><%= t('navbar.dropdown.see_more') %></p>

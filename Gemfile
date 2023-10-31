@@ -11,8 +11,6 @@ gem 'i18n'
 
 gem 'jquery-rails'
 
-gem 'rails-controller-testing'
-
 gem 'pagy', '~> 6.1'
 
 gem 'simplecov', require: false, group: :test

@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.feature 'user edit personal information', type: :feature do
   let!(:user) { create(:user) }
 
-  context "with log in user" do
-    it "changes the information" do
+  context 'with log in user' do
+    it 'changes the information' do
       login_as(user)
       visit edit_user_registration_path
 
-      attach_file('Foto de perfil', File.absolute_path('app/assets/images/filipa_mini_box.png'))
+      attach_file('Foto de perfil', File.absolute_path('app/assets/images/profile_picture.png'))
       fill_in 'Nombre', with: 'name'
       fill_in 'Apellido', with: 'surname'
       fill_in 'Contraseña actual' , with: user.password
@@ -25,8 +25,8 @@ RSpec.feature 'user edit personal information', type: :feature do
     end
   end
 
-  context "without log in user" do
-    it "redirects to sign in" do
+  context 'without log in user' do
+    it 'redirects to sign in' do
       visit edit_user_registration_path
       expect(page).to have_current_path(new_user_session_path)
     end

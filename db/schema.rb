@@ -97,6 +97,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_07_170837) do
     t.string "recipient_name", null: false
     t.string "recipient_phone_number", null: false
     t.string "personalization"
+    t.bigint "rut"
+    t.string "company_name"
     t.bigint "user_id", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
@@ -139,12 +141,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_07_170837) do
     t.string "surname", null: false
     t.string "company", null: false
     t.string "position", null: false
-    t.integer "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "phone_number"
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["phone_number"], name: "index_users_on_phone_number", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
