@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+Provider.destroy_all
 Category.destroy_all
+Product.destroy_all
 
 4.times do
   Provider.create(
@@ -23,7 +25,7 @@ end
 100.times do
   product = Product.create(
     name: Faker::Food.dish,
-    description: '...',
+    description: Faker::Food.description,
     price: Faker::Commerce.price,
     rating: Faker::Number.decimal(l_digits: 1, r_digits: 2),
     vegan: Faker::Boolean.boolean,
@@ -36,6 +38,7 @@ end
   product.provider = Provider.all.sample
   product.category = Category.all.sample
   product.image.attach(io: File.open(Rails.root.join('app/assets/images/filipa_mini_box.png')), filename: 'filipa_mini_box.png')
+  product.additionals << Additional.all
   product.save
 end
 

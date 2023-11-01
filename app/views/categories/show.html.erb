@@ -46,11 +46,13 @@
                     <%= product.rating %>
                     <%= image_tag('star.png', alt: 'rating logo') %>
                   </div>
+                  <div class="text-secondary"><%= p.provider.name %></div>
+                  <p class="mt-2 mb-2 bg-primary-gradient bg-clip-text text-transparent fw-medium">$<%= p.price %></p>
                 </div>
                 <div class="text-secondary"><%= product.provider.name %></div>
                 <p class="mt-2 mb-2 bg-primary-gradient bg-clip-text text-transparent fw-medium">$<%= product.price %></p>
               </div>
-            </div>
+            <% end %>
           </div>
         <% end %>
       </div>

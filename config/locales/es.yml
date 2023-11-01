@@ -10,6 +10,26 @@ es:
   info:
     our_web: "En nuestra plataforma web vas a"
     find: "encontrar todo lo que estás buscando."
+  product_show:
+    iva: IVA
+    print_budget: Imprimir presupuesto
+    food_box: Food Box
+    description: Descripción
+    each: Cada
+    the: de
+    contains: contiene
+    products: los siguientes productos
+    unit: unidad
+    see_califications: Ver calificaciones
+    customize_box: Personaliza tu Box
+    no_additional_cost: Sin costo adicional
+    additional: adicionales
+    more_customization: ¿Necesita más personalización?
+    executive: Hablar con un ejecutivo
+    total: TOTAL
+    buy: COMPRAR
+    buy_sm: COMPRAR AHORA
+    back: Volver
   welcome: "¡Bienvenido a Plan IT!"
   greeting: "¡Hola, otra vez!"
   categories: Categorias

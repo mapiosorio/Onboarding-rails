@@ -6,5 +6,6 @@ FactoryBot.define do
     email { Faker::Internet.email }
     password { Faker::Internet.password }
     position { Faker::Company.profession }
+    phone_number { Faker::PhoneNumber.phone_number }
   end
 end
