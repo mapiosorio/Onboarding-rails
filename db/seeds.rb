@@ -27,7 +27,7 @@ end
     sharing: Faker::Boolean.boolean,
     gluten_free: Faker::Boolean.boolean,
     sugar_free: Faker::Boolean.boolean,
-    picada: Faker::Boolean.boolean,
+    finger_food: Faker::Boolean.boolean,
   )
 
   product.supplier = Supplier.all.sample

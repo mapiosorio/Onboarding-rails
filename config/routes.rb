@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'users/registrations' }
   resources :categories, only: [:index, :show] do
-    get :filter_order, on: :member, as: 'filter_order'
+    get :filter_order, on: :member
  end
 
   root to: 'categories#index'

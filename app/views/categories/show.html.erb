@@ -4,28 +4,28 @@
   <div class="mx-lg-5 px-lg-5 mx-3">
     <div class="mt-5 pt-5 pb-3 d-none d-lg-flex flex-column">
       <h5 class="fw-normal m-0 mt-5"><%= @category.name.upcase %></h5>
-      <h1>Food Box</h1>
+      <h1><%= t('home_page.food_box') %></h1>
       <p class="text-secondary"><%= t('home_page.options_count') %></p>
     </div>
     <div class="d-lg-flex d-none flex-column justify-content-between">
       <div class="d-flex justify-content-between">
         <div class="d-flex gap-5">
           <div class="d-flex gap-xl-3 gap-1 mb-4 me-3">
-            <%= link_to t('home_page.links.sharing'), filter_order_category_path(sharing: (params[:sharing] == 'true' ? false : true), vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], picada: params[:picada], sort: params[:sort]), class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:sharing] == 'true' }" %>
-            <%= link_to t('home_page.links.vegan'), filter_order_category_path(sharing: params[:sharing], vegan: (params[:vegan] == 'true' ? false: true), sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], picada: params[:picada], sort: params[:sort]), class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:vegan] == 'true' }" %>
+            <%= link_to t('home_page.links.sharing'), filter_order_category_path(sharing: (params[:sharing] == 'true' ? false : true), vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: params[:sort]), class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:sharing] == 'true' }" %>
+            <%= link_to t('home_page.links.vegan'), filter_order_category_path(sharing: params[:sharing], vegan: (params[:vegan] == 'true' ? false: true), sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: params[:sort]), class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:vegan] == 'true' }" %>
           </div>
           <div class="d-flex gap-xl-3 gap-1 mb-4 ms-5">
-            <%= link_to t('home_page.links.sugar_free'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: (params[:sugar_free] == 'true' ? false: true), gluten_free: params[:gluten_free], picada: params[:picada], sort: params[:sort]),  class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:sugar_free] == 'true' }" %>
-            <%= link_to t('home_page.links.gluten_free'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: (params[:gluten_free] == 'true' ? false : true), picada: params[:picada], sort: params[:sort]), class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:gluten_free] == 'true' }" %>
-            <%= link_to t('home_page.links.picadas'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], picada: (params[:picada] == 'true' ? false : true), sort: params[:sort]),  class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:picada] == 'true' }" %>
+            <%= link_to t('home_page.links.sugar_free'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: (params[:sugar_free] == 'true' ? false: true), gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: params[:sort]),  class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:sugar_free] == 'true' }" %>
+            <%= link_to t('home_page.links.gluten_free'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: (params[:gluten_free] == 'true' ? false : true), finger_food: params[:finger_food], sort: params[:sort]), class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:gluten_free] == 'true' }" %>
+            <%= link_to t('home_page.links.finger_foods'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: (params[:finger_food] == 'true' ? false : true), sort: params[:sort]),  class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:finger_food] == 'true' }" %>
           </div>
         </div>
         <div class="dropdown">
-          <button class="btn fw-light dropdown-toggle" type="button" id="order" data-bs-toggle="dropdown" aria-expanded="false">Ordenar por</button>
+          <button class="btn fw-light dropdown-toggle" type="button" id="order" data-bs-toggle="dropdown" aria-expanded="false"><%= t('home_page.order_by') %></button>
           <ul class="dropdown-menu">
-            <%= link_to t('home_page.links.default_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], picada: params[:picada]), class: "dropdown-item" %>
-            <%= link_to t('home_page.links.asc_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], picada: params[:picada], sort: 'price_asc'), class: "dropdown-item" %>
-            <%= link_to t('home_page.links.desc_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], picada: params[:picada], sort: 'price_desc'), class: "dropdown-item" %>
+            <%= link_to t('home_page.links.default_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food]), class: "dropdown-item" %>
+            <%= link_to t('home_page.links.asc_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: 'price_asc'), class: "dropdown-item" %>
+            <%= link_to t('home_page.links.desc_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: 'price_desc'), class: "dropdown-item" %>
           </ul>
         </div>
       </div>
@@ -33,7 +33,7 @@
     </div>
 
     <div class="d-flex mt-lg-5 mt-0 flex-column flex-lg-row justify-content-center    align-items-center">
-      <p class="text-center d-flex d-lg-none justify-content-center mt-5 text-secondary"><%= @products.count %> resultados</p>
+      <p class="text-center d-flex d-lg-none justify-content-center mt-5 text-secondary"><%= @products.count.to_s + ' ' + t('results') %></p>
       <div class="d-flex w-100 mt-2 pt-5 mt-lg-0 pt-lg-0 row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-5">
         <% @products.each do |p|%>
           <div class="col">

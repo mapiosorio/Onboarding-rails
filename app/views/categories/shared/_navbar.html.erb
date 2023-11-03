@@ -10,14 +10,14 @@
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
               <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Categories</h5>
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><% t('categories') %></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
               </div>
               <div class="offcanvas-body">
                 <ul class="navbar-nav flex-grow-1 pe-5 gap-xl-5 gap-2 ms-lg-5 mb-lg-4">
-                  <% Category.all.each do |c| %>
+                  <% Category.all.each do |category| %>
                     <li class="nav-item">
-                      <%= link_to c.name, c, class: "bg-primary-gradient text-transparent bg-clip-text pb-1 #{' border-primary-gradient' if current_page?(c) || current_page?(filter_order_category_path(c))}" %>
+                      <%= link_to category.name, category, class: "bg-primary-gradient text-transparent bg-clip-text pb-1 #{' border-primary-gradient' if current_page?(category) || current_page?(filter_order_category_path(category))}" %>
                     </li>
                   <% end %>
                 </ul>

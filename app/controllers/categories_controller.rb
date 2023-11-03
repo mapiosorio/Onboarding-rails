@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
     @products = @category.products
     sort_option = params[:sort]
 
-    @filter_params = params.permit(:sharing, :vegan, :sugar_free, :gluten_free, :picada)
+    @filter_params = params.permit(:sharing, :vegan, :sugar_free, :gluten_free, :finger_food)
 
     @filter_params.each do |param, value|
       @products = @products.where(param) if value == 'true'

@@ -9,7 +9,7 @@ FactoryBot.define do
     sharing { Faker::Boolean.boolean }
     gluten_free { Faker::Boolean.boolean}
     sugar_free { Faker::Boolean.boolean }
-    picada { Faker::Boolean.boolean }
+    finger_food { Faker::Boolean.boolean }
     rating { Faker::Number.decimal(l_digits: 1, r_digits: 2)}
   end
 end

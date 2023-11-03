@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_01_155629) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_03_174342) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -97,7 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_155629) do
     t.boolean "vegan", default: false
     t.boolean "sugar_free", default: false
     t.boolean "gluten_free", default: false
-    t.boolean "picada", default: false
+    t.boolean "finger_food", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_products_on_category_id"
