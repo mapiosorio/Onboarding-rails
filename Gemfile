@@ -9,8 +9,6 @@ gem 'faker'
 
 gem 'i18n'
 
-gem 'faker'
-
 gem 'jquery-rails'
 
 gem 'rails-controller-testing'

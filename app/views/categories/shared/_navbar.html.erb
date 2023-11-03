@@ -17,7 +17,7 @@
                 <ul class="navbar-nav flex-grow-1 pe-5 gap-xl-5 gap-2 ms-lg-5 mb-lg-4">
                   <% Category.all.each do |c| %>
                     <li class="nav-item">
-                      <%= link_to c.name, c, class: "bg-primary-gradient text-transparent bg-clip-text pb-1 #{' border-primary-gradient' if current_page?(c) || current_page?(order_path(c)) || current_page?(filter_path(c))}" %>
+                      <%= link_to c.name, c, class: "bg-primary-gradient text-transparent bg-clip-text pb-1 #{' border-primary-gradient' if current_page?(c) || current_page?(filter_order_category_path(c))}" %>
                     </li>
                   <% end %>
                 </ul>

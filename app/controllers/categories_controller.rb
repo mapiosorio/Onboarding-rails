@@ -12,28 +12,11 @@ class CategoriesController < ApplicationController
     @pagy, @products = pagy(@products)
   end
 
-  def order
-    @user = current_user
-    @category = Category.find(params[:id])
-    sort_option = params[:sort]
-
-    if sort_option == 'price_asc'
-      @products = @category.products.order(price: :asc)
-    elsif sort_option == 'price_desc'
-      @products = @category.products.order(price: :desc)
-    else
-      @products = @category.products
-    end
-
-    @pagy, @products = pagy(@products)
-
-    render 'show'
-  end
-
-  def filter
+  def filter_order
     @user = current_user
     @category = Category.find(params[:id])
     @products = @category.products
+    sort_option = params[:sort]
 
     @filter_params = params.permit(:sharing, :vegan, :sugar_free, :gluten_free, :picada)
 
@@ -41,8 +24,15 @@ class CategoriesController < ApplicationController
       @products = @products.where(param) if value == 'true'
     end
 
-    @pagy, @products = pagy(@products)
+    if sort_option == 'price_asc'
+      @products = @products.order(price: :asc)
+    elsif sort_option == 'price_desc'
+      @products = @products.order(price: :desc)
+    else
+      @products = @products
+    end
 
+    @pagy, @products = pagy(@products)
 
     render 'show'
   end
