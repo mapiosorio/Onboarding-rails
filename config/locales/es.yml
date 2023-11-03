@@ -68,6 +68,7 @@ es:
             name:
               blank: "no puede estar en blanco"
             email:
+              taken: "ya está en uso"
               blank: "no puede estar en blanco"
             password:
               blank: "no puede estar en blanco"
