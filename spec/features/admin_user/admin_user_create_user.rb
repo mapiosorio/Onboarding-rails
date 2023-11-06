@@ -22,4 +22,3 @@ RSpec.describe 'create user', type: :feature do
     expect(page).to have_current_path(admin_user_path(User.last))
   end
 end
-
