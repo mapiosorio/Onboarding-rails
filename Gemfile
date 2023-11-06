@@ -5,6 +5,8 @@ ruby "3.0.0"
 
 gem 'activeadmin'
 
+gem 'ckeditor'
+
 gem 'devise'
 
 gem 'faker'
