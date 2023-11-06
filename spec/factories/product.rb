@@ -3,7 +3,7 @@ FactoryBot.define do
     description { Faker::Food.description }
     name { Faker::Food.dish }
     price { Faker::Commerce.price }
-    supplier { association(:supplier) }
+    provider { association(:provider) }
     category { association(:category) }
     vegan { Faker::Boolean.boolean }
     sharing { Faker::Boolean.boolean }

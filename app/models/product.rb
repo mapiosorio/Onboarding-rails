@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
   has_one_attached :image
-  belongs_to :supplier
+  belongs_to :provider
   belongs_to :category
 
-  validates :name, :price, :supplier, :category, :rating, presence: true
+  validates_presence_of :name, :price, :provider, :category, :rating
 end

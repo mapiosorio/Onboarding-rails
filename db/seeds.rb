@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 4.times do
-  Supplier.create(
+  Provider.create(
     name: Faker::Company.name
   )
 end
@@ -30,7 +30,7 @@ end
     finger_food: Faker::Boolean.boolean,
   )
 
-  product.supplier = Supplier.all.sample
+  product.provider = Provider.all.sample
   product.category = Category.all.sample
   product.image.attach(io: File.open(Rails.root.join('app/assets/images/filipa_mini_box.png')), filename: 'filipa_mini_box.png')
   product.save

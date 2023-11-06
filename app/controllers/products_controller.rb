@@ -1,5 +1,3 @@
 class ProductsController < ApplicationController
-  def show
-
-  end
+  def show; end
 end
