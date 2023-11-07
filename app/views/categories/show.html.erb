@@ -11,45 +11,44 @@
       <div class="d-flex justify-content-between">
         <div class="d-flex gap-5">
           <div class="d-flex gap-xl-3 gap-1 mb-4 me-3">
-            <%= link_to t('home_page.links.sharing'), filter_order_category_path(sharing: (params[:sharing] == 'true' ? false : true), vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: params[:sort]), class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:sharing] == 'true' }" %>
-            <%= link_to t('home_page.links.vegan'), filter_order_category_path(sharing: params[:sharing], vegan: (params[:vegan] == 'true' ? false: true), sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: params[:sort]), class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:vegan] == 'true' }" %>
+            <%= filter_link(:sharing, t('home_page.links.sharing')) %>
+            <%= filter_link(:vegan, t('home_page.links.vegan')) %>
           </div>
           <div class="d-flex gap-xl-3 gap-1 mb-4 ms-5">
-            <%= link_to t('home_page.links.sugar_free'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: (params[:sugar_free] == 'true' ? false: true), gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: params[:sort]),  class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:sugar_free] == 'true' }" %>
-            <%= link_to t('home_page.links.gluten_free'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: (params[:gluten_free] == 'true' ? false : true), finger_food: params[:finger_food], sort: params[:sort]), class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:gluten_free] == 'true' }" %>
-            <%= link_to t('home_page.links.finger_foods'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: (params[:finger_food] == 'true' ? false : true), sort: params[:sort]),  class: "btn btn-outline-dark px-xl-4 filters #{ 'active' if params[:finger_food] == 'true' }" %>
+            <%= filter_link(:sugar_free, t('home_page.links.sugar_free')) %>
+            <%= filter_link(:gluten_free, t('home_page.links.gluten_free')) %>
+            <%= filter_link(:finger_food, t('home_page.links.finger_foods')) %>
           </div>
         </div>
         <div class="dropdown">
           <button class="btn fw-light dropdown-toggle" type="button" id="order" data-bs-toggle="dropdown" aria-expanded="false"><%= t('home_page.order_by') %></button>
           <ul class="dropdown-menu">
-            <%= link_to t('home_page.links.default_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food]), class: "dropdown-item" %>
-            <%= link_to t('home_page.links.asc_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: 'price_asc'), class: "dropdown-item" %>
-            <%= link_to t('home_page.links.desc_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: 'price_desc'), class: "dropdown-item" %>
+            <%= link_to t('home_page.links.default_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food]), class: 'dropdown-item' %>
+            <%= link_to t('home_page.links.asc_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: 'asc'), class: 'dropdown-item' %>
+            <%= link_to t('home_page.links.desc_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: 'desc'), class: 'dropdown-item' %>
           </ul>
         </div>
       </div>
       <div class="border-bottom border-dark"></div>
     </div>
-
-    <div class="d-flex mt-lg-5 mt-0 flex-column flex-lg-row justify-content-center    align-items-center">
+    <div class="d-flex mt-lg-5 mt-0 flex-column flex-lg-row justify-content-center align-items-center">
       <p class="text-center d-flex d-lg-none justify-content-center mt-5 text-secondary"><%= "#{@products.count.to_s} #{t('results')}" %></p>
       <div class="d-flex w-100 mt-2 pt-5 mt-lg-0 pt-lg-0 row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-5">
-        <% @products.each do |p|%>
+        <% @products.each do |product|%>
           <div class="col">
             <div class="bg-white rounded flex-column mb-3 position-relative">
-              <%= image_tag p.image, class: 'img-fluid h-100 w-100' if p.image.attached? %>
+              <%= image_tag product.image, class: 'img-fluid h-100 w-100' if product.image.attached? %>
               <i class="bi bi-heart position-absolute text-white end-0 me-2 mt-1 heart"></i>
               <div class="mx-2 mt-2">
                 <div class="d-flex justify-content-between">
-                  <div class="fs-6"><%= p.name %></div>
+                  <div class="fs-6"><%= product.name %></div>
                   <div class="bg-primary-gradient bg-clip-text text-transparent">
-                    <%= p.rating %>
+                    <%= product.rating %>
                     <%= image_tag('star.png', alt: 'rating logo') %>
                   </div>
                 </div>
-                <div class="text-secondary"><%= p.provider.name %></div>
-                <p class="mt-2 mb-2 bg-primary-gradient bg-clip-text text-transparent fw-medium">$<%= p.price %></p>
+                <div class="text-secondary"><%= product.provider.name %></div>
+                <p class="mt-2 mb-2 bg-primary-gradient bg-clip-text text-transparent fw-medium">$<%= product.price %></p>
               </div>
             </div>
           </div>

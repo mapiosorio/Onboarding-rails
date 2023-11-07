@@ -29,11 +29,8 @@ class CategoriesController < ApplicationController
 
   def apply_sorting
     sort_option = params[:sort]
-    if sort_option == 'price_asc'
-      @products = @products.order(price: :asc)
-    elsif sort_option == 'price_desc'
-      @products = @products.order(price: :desc)
+    if sort_option
+      @products = @products.order(price: sort_option.to_sym)
     end
   end
-
 end
