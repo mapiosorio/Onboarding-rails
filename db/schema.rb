@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_03_174342) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_13_133313) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -63,6 +63,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_174342) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "additionals_orders", id: false, force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "additional_id", null: false
+  end
+
   create_table "additionals_products", id: false, force: :cascade do |t|
     t.bigint "additional_id", null: false
     t.bigint "product_id", null: false
@@ -80,6 +85,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_174342) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "cards", force: :cascade do |t|
+    t.bigint "number"
+    t.date "expiration_date"
+    t.string "cardholder"
+    t.integer "cvv"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -87,7 +103,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_174342) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "quantity", null: false
+    t.integer "quantity", default: 0, null: false
     t.integer "total", null: false
     t.integer "subtotal", null: false
     t.integer "taxes", null: false
@@ -96,9 +112,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_174342) do
     t.time "delivery_time", null: false
     t.string "recipient_name", null: false
     t.string "recipient_phone_number", null: false
-    t.string "personalization"
-    t.bigint "rut"
-    t.string "company_name"
+    t.bigint "rut", null: false
+    t.string "company_name", null: false
+    t.text "personalization_message"
+    t.string "delivery_direction", null: false
+    t.boolean "re_delivery", default: false
     t.bigint "user_id", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false
@@ -129,6 +147,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_174342) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "delivery_cost", default: 0
   end
 
   create_table "users", force: :cascade do |t|

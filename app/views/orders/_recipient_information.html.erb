@@ -1,0 +1,38 @@
+<p class="fs-3 pt-lg-4 pt-2 m-0"><%= t('order.recipient') %></p>
+<p><%= t('order.recipient_info.complete_info') %></p>
+<div class="d-flex flex-column">
+  <ul class="nav nav-pills mb-3 d-flex justify-content-between rounded-5 border mb-5">
+    <li class="nav-item w-50">
+      <a class="nav-link bg-primary-gradient text-center rounded-5 text-white fw-light letter-spacing-n1px py-1"><%= t('order.home_delivery') %></a>
+    </li>
+    <li class="nav-item w-50 rounded-5">
+      <a class="nav-link text-center text-dark fw-light letter-spacing-n1px py-1"><%= t('order.multiple_directions') %></a>
+    </li>
+  </ul>
+  <div class="d-flex flex-column flex-lg-row row">
+    <div class="d-flex flex-column col-lg-6">
+      <%= f.label :recipient_name, t('order.recipient_info.name'), class: 'text-secondary' %>
+      <%= f.text_field :recipient_name, class: 'border-0 border-bottom border-secondary w-100 bg-transparent' %>
+    </div>
+    <div class="d-flex flex-column col-lg-6 mt-3 mt-lg-0">
+      <%= f.label :recipient_phone_number, t('order.recipient_info.phone_number'), class: 'text-secondary' %>
+      <%= f.telephone_field :recipient_phone_number, class: 'border-0 border-bottom border-secondary w-100 bg-transparent'%>
+    </div>
+  </div>
+  <div class="d-flex row mt-3">
+    <div class="d-flex flex-column col-lg-6">
+      <%= f.label :delivery_date, t('order.delivery_info.date'), class: 'text-secondary' %>
+      <%= f.date_field :delivery_date, class: 'border-0 border-bottom border-secondary w-100 bg-transparent' %>
+    </div>
+    <div class="d-flex flex-column col-lg-6 mt-3 mt-lg-0">
+      <%= f.label :delivery_time, t('order.delivery_info.time'), class: 'text-secondary' %>
+      <%= f.time_field :delivery_time, class: 'border-0 border-bottom border-secondary w-100 bg-transparent' %>
+    </div>
+  </div>
+  <div class="d-flex row mt-3">
+    <div class="d-flex flex-column col-lg-6">
+      <%= f.label :delivery_direction, t('order.delivery_info.direction'), class: 'text-secondary' %>
+      <%= f.text_field :delivery_direction, class: 'border-0 border-bottom border-secondary w-100 bg-transparent'%>
+    </div>
+  </div>
+</div>

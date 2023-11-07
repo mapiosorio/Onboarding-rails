@@ -1,0 +1,9 @@
+<div class="d-flex mx-lg-5 mt-5">
+  <% image_url = product.image.attached? ? product.image : 'no_product.jpeg' %>
+  <%= image_tag(image_url, class: 'img-fluid product-image-sm-size rounded me-3', alt: 'Product picture') %>
+  <div class="d-flex flex-column">
+    <p class="text-dark m-0"><%= "#{ product.provider.name.upcase } | #{ product.name }" %></p>
+    <p class="text-secondary fw-light m-0 fs-12px"><%= t('order.color') %></p>
+    <p class="text-secondary fw-light m-0 fs-12px"><%= t('order.with_personalization') %></p>
+  </div>
+</div>

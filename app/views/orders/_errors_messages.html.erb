@@ -1,0 +1,19 @@
+<% if resource.errors.any? %>
+  <div id="error_explanation" data-turbo-cache="false">
+    <h2>
+      <%= I18n.t("errors.messages.not_saved",
+                count: resource.errors.to_hash.slice(*error_attributes).values.flatten.compact.count,
+                resource: resource.class.model_name.human.downcase)
+      %>
+    </h2>
+    <ul>
+      <% error_attributes.each do |attribute| %>
+        <% if resource.errors[attribute].any? %>
+          <% resource.errors[attribute].each do |message| %>
+            <li><%= "#{resource.class.human_attribute_name(attribute)} #{message}" %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -45,6 +45,15 @@
   width: 50px;
 }
 
+.product-image-sm-size {
+  height: 100px;
+  width: 110px;
+}
+
+.bottom-140px {
+  bottom: 140px;
+}
+
 .border-primary-gradient {
   border-bottom: 2px solid transparent;
   border-image: linear-gradient(46.99deg, $primary -4.4%, #62D9FF 120.42%);
@@ -53,6 +62,10 @@
 
 .fs-12px {
   font-size: 12px;
+}
+
+.w-50px {
+  width: 50px;
 }
 
 @include media-breakpoint-up(lg) {
@@ -80,5 +93,9 @@
 
   .bg-lg-white {
     background-color: white !important;
+  }
+
+  .d-lg-down-none {
+    display: none;
   }
 }

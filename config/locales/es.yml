@@ -30,6 +30,46 @@ es:
     buy: COMPRAR
     buy_sm: COMPRAR AHORA
     back: Volver
+  order:
+    billing:
+      title: Información de facturacion
+      rut: RUT
+      company_name: Razón Social
+    home_delivery: Envío a domicilio
+    upload_file: Subir archivo
+    multiple_directions: Múltiples Direcciones
+    validate_purchase: VALIDAR COMPRA
+    subtotal: Subtotal
+    buy: COMPRAR
+    total: TOTAL
+    taxes: IVA
+    payment: Método de Pago
+    color: Color:Azul
+    with_personalization: Con tarjeta personalizada
+    order_summary: Resumen de compra
+    company_logo: Adjuntar logo de la Empresa
+    company_logo_info: Adjuntar en formato png, sin fondo y en alta resolución.
+    write_message: Escriba su mensaje...
+    personalization: Personalización
+    personalization_select: Seleccionó la opción de agregar una tarjeta personal.
+    personalization_info: Por favor, deje el mensaje que desea que acompañe el obsequio.
+    delivery_details: Detalles de la entrega
+    recipient: Destinatario
+    recipient_info:
+      complete_info: Complete la información del destinatario de su regalo.
+      name: Nombre y apellido
+      phone_number: Número de contacto
+    delivery_info:
+      delivery_cost: Costo de envío
+      re_delivery: Intentar reenvío a la misma dirección
+      delivery_bounces: Si el envío rebota
+      delivery_bounces_info: Cada re-entrega se considera un envío extra y el horario será coordinado por nuestro equipo con el destinatario.
+      direction: Dirección de entrega
+      time: Horario de entrega
+      date: Fecha de entrega
+      cost: Costo de envío
+      surprise_delivery: Entrega sorpresa
+      surprise_delivery_info: Si el envío no es sorpresa, podríamos contactar al destinatario de la entrega.s
   welcome: "¡Bienvenido a Plan IT!"
   greeting: "¡Hola, otra vez!"
   categories: Categorias
@@ -114,8 +154,25 @@ es:
         phone_number: Número de contacto
         current_password: Contraseña actual
         password_confirmation: Las contraseñas
+        position: Cargo en la empresa
+      order:
+        delivery_date: La fecha de entrega
+        delivery_time: El horario de entrega
+        recipient_name: El Nombre y apellido
+        recipient_phone_number: El Número de contacto
+        quantity: Cantidad
+        rut: El RUT
+        company_name: La Razón Social
+        delivery_direction: la Dirección de entrega
     errors:
+      messages:
+        record_invalid: "El registro no es válido"
+        blank: no puede estar en blanco
       models:
+        order:
+          attributes:
+            quantity:
+              greater_than: La cantidad no puede ser 0
         user:
           attributes:
             current_password:
