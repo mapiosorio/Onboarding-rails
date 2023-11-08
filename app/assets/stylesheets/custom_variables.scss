@@ -1,3 +1,14 @@
 $primary: #0F58B7;
 $secondary: #7D7D7D;
 $info: #B3B3B3;
+
+@use "sass:map";
+@import '../../../node_modules/bootstrap/scss/functions';
+@import '../../../node_modules/bootstrap/scss/variables';
+
+$custom-colors: (
+  "custom-gray": rgba(251, 251, 251, 1),
+  "custom-light-blue": rgb(155, 199, 255, 1)
+);
+
+$theme-colors: map-merge($map1: $theme-colors, $map2: $custom-colors);

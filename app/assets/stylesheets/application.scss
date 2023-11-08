@@ -31,6 +31,26 @@
   line-height: 130%;
 }
 
+.text-transparent {
+  color: transparent
+}
+
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.default-profile-picture {
+  height: 50px;
+  width: 50px;
+}
+
+.border-primary-gradient {
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(46.99deg, $primary -4.4%, #62D9FF 120.42%);
+  border-image-slice: 1;
+}
+
 @include media-breakpoint-up(lg) {
   .fs-lg-2 {
     font-size: 35px;
@@ -42,5 +62,11 @@
 
   .fw-lg-normal {
     font-weight: 400 !important;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .position-lg-static {
+    position: static !important;
   }
 }

@@ -9,12 +9,27 @@ es:
     find: "encontrar todo lo que estás buscando."
   welcome: "¡Bienvenido a Plan IT!"
   greeting: "¡Hola, otra vez!"
+  categories: Categorias
+  results: resultados
   hello: "Hola"
   complete_info: "Por favor, complete su información personal para crear un usuario propio."
   confirm_info: "Por favor, confirma tu información para ingresar a Plan IT."
   have_account: "¿Ya tenés una cuenta?"
   not_have_account: "¿No tienes una cuenta aún?"
   help: "¿Necesitás ayuda?"
+  home_page:
+    order_by: Ordenar por
+    food_box: Food Box
+    options_count: Más de 30 opciones
+    links:
+      sharing: Para compartir
+      vegan: Veganos/Vegetarianos
+      sugar_free: Sin azúcar
+      gluten_free: Sin Tacc
+      finger_foods: Picadas
+      default_order: Por defecto
+      asc_order: Precio ascendente
+      desc_order: Precio descendente
   links:
     login: "Inicia sesión aquí."
     register: "¡Regístrate aquí!"
@@ -29,10 +44,13 @@ es:
     remember_box: "Recordar mi información"
     submit_login: "INICIAR SESIÓN"
     change_password: "CAMBIAR CONTRASEÑA"
+    position: "Cargo en la empresa"
   footer:
     number: "Tel: +598 96593615"
     email: "info@planit.com.uy"
     rights: "PlanIT, 2021 - All rights reserved"
+    copyright: Copyright ©2021
+    powered_by: Powered by
   reset_password:
     request_link: "Alguien ha solicitado cambiar su contraseña. Puedes hacerlo a través del siguiente enlace."
     link: "Cambiar mi contraseña"

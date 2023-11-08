@@ -26,12 +26,12 @@
 
         <div class="field mt-3">
           <%= f.label :surname, t('form_fields.surname'), class: 'fw-lg-normal fw-medium' %><br />
-          <%= f.text_field :surname, autofocus: true, class: 'border-0 border-bottom border-dark w-100 bg-transparent' %>
+          <%= f.text_field :surname, class: 'border-0 border-bottom border-dark w-100 bg-transparent' %>
         </div>
 
         <div class="field mt-3">
           <%= f.label :email, t('form_fields.email'), class: 'fw-lg-normal fw-medium' %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'border-0 border-bottom border-dark w-100 bg-transparent' %>
+          <%= f.email_field :email, autocomplete: 'email', class: 'border-0 border-bottom border-dark w-100 bg-transparent' %>
         </div>
 
         <div class="field mt-3">
@@ -41,7 +41,12 @@
 
         <div class="field mt-3">
           <%= f.label :company, t('form_fields.company'), class: 'fw-lg-normal fw-medium' %>
-          <%= f.text_field :company, autofocus: true, class: 'border-0 border-bottom border-dark w-100 shadow-none bg-transparent mb-2' %>
+          <%= f.text_field :company, class: 'border-0 border-bottom border-dark w-100 shadow-none bg-transparent mb-2' %>
+        </div>
+
+        <div class="field mt-3">
+          <%= f.label :position, t('form_fields.position'), class: 'fw-lg-normal fw-medium' %>
+          <%= f.text_field :position, class: 'border-0 border-bottom border-dark w-100 shadow-none bg-transparent mb-2' %>
         </div>
 
         <div class="actions mb-5 d-flex justify-content-center w-100 mt-5">
