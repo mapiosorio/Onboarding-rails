@@ -9,7 +9,7 @@ RSpec.describe 'order products', type: :feature do
     it 'shows the products associated with the category ordered by price in ascending order' do
       login_as(user)
       sorted_products_asc = category.products.order(price: :asc)
-      visit filter_order_category_path(category, sort: 'price_asc')
+      visit filter_order_category_path(category, sort: 'asc')
 
       expect(products).to match_array(sorted_products_asc)
     end
@@ -17,10 +17,9 @@ RSpec.describe 'order products', type: :feature do
     it 'shows the products associated with the category ordered by price in descending order' do
       login_as(user)
       sorted_products_desc = category.products.order(price: :desc)
-      visit filter_order_category_path(category, sort: 'price_desc')
+      visit filter_order_category_path(category, sort: 'desc')
 
       expect(products).to match_array(sorted_products_desc)
     end
   end
 end
-
