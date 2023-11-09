@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'user edit personal information', type: :feature do
   let!(:user) { create(:user) }
 
-  context 'with log in user' do
+  context 'with logged user' do
     it 'changes the information' do
       login_as(user)
       visit edit_user_registration_path
