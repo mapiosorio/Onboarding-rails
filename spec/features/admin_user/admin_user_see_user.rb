@@ -6,6 +6,7 @@ RSpec.describe 'see users', type: :feature do
   before do
     login_as(admin_user)
   end
+
   it 'display a list of users' do
     user1 = create(:user)
     user2 = create(:user)
@@ -16,6 +17,5 @@ RSpec.describe 'see users', type: :feature do
     expect(page).to have_content(user1.email)
     expect(page).to have_content(user2.email)
     expect(page).to have_content(user3.email)
-
   end
 end
