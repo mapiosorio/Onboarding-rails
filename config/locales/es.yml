@@ -1,4 +1,7 @@
 es:
+  time:
+    formats:
+      long: "%Y-%m-%d %H:%M:%S"
   title:
     start: "Comienza a"
     simplify: "simplificar tus"

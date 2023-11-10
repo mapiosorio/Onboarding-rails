@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.0"
 
+gem 'activeadmin'
+
 gem 'devise'
 
 gem 'faker'
@@ -10,8 +12,6 @@ gem 'faker'
 gem 'i18n'
 
 gem 'jquery-rails'
-
-gem 'rails-controller-testing'
 
 gem 'pagy', '~> 6.1'
 
