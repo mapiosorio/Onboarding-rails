@@ -7,7 +7,6 @@ export default class extends Controller {
   increment() {
     this.quantityTarget.value++;
     this.updateTotal();
-
   }
 
   decrement() {
@@ -24,11 +23,9 @@ export default class extends Controller {
         const price = parseFloat(checkbox.dataset.price)
         additionalCost += price;
       }
-      console.log(checkbox.dataset.additional)
     });
     return additionalCost;
   }
-
 
   updateTotal() {
     const productPrice = parseFloat(this.element.getAttribute("data-productPrice"));

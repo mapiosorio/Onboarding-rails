@@ -5,11 +5,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-
-Provider.destroy_all
-Category.destroy_all
-Product.destroy_all
-
 4.times do
   Provider.create(
     name: Faker::Company.name
