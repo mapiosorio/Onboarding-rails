@@ -2,11 +2,8 @@
   <%= render 'categories/shared/navbar' %>
 </div>
 <div class="bg-custom-gray pt-lg-5 mt-lg-5 bg-lg-white">
-  <% if @product.image.attached? %>
-    <%= image_tag @product.image, class: 'w-100 d-flex d-lg-none position-relative' %>
-  <% else %>
-    <%= image_tag('no_product.jpeg', class: 'w-100 d-flex d-lg-none position-relative', alt: 'Default product picture') %>
-  <% end %>
+  <% image_url = @product.image.attached? ? @product.image : 'no_product.jpeg' %>
+  <%= image_tag(image_url, class: 'w-100 d-flex d-lg-none position-relative', alt: 'Product picture') %>
   <%= link_to category_path(@product.category.id), class: 'text-dark position-absolute top-0 text-white ms-3 mt-4' do %>
     <i class="bi bi-chevron-left"></i>
     <span><%= t('product_show.back')%></span>
@@ -15,40 +12,18 @@
   <div class="mx-lg-5 px-lg-5 mx-3">
     <div class="mt-lg-5 pt-5 pb-3 d-flex flex-column-reverse flex-lg-row row">
       <div class="col-lg-7">
-        <div class="text-info d-none d-lg-flex"><%= @product.category.name + ' > ' + t('product_show.food_box') %></div>
-        <% if @product.image.attached? %>
-          <%= image_tag @product.image, class: 'img-fluid h-50 w-100 rounded d-none d-lg-flex' %>
-        <% else %>
-          <%= image_tag('no_product.jpeg', class: 'img-fluid h-50 w-100 rounded d-none d-lg-flex', alt: 'Default product picture') %>
-        <% end %>
-        <div class=" d-lg-flex flex-column">
+        <div class="text-info d-none d-lg-flex"><%= "#{ @product.category.name } > #{ t('product_show.food_box') }" %></div>
+        <% image_url = @product.image.attached? ? @product.image : 'no_product.jpeg' %>
+        <%= image_tag(image_url, class: 'img-fluid h-50 w-100 rounded d-none d-lg-flex', alt: 'Product picture') %>
+        <div class="d-none d-lg-flex flex-column">
           <h2 class="fw-normal mt-lg-5 mt-3"><%= t('product_show.description') %></h2>
-          <p class="mt-lg-5 mt-3"><%= t('product_show.each') %> <strong><%= @product.name %></strong><span class="d-none d-lg-inline"> <%= t('product_show.the') + ' ' + @product.provider.name %></span> <%= t('product_show.contains') %><span class="d-none d-lg-inline"> <%= t('product_show.products') %></span>:</p>
+          <p class="mt-lg-5 mt-3"><%= t('product_show.each') %> <strong><%= @product.name %></strong><span class="d-none d-lg-inline"> <%= "#{ t('product_show.the') } #{ @product.provider.name } #{ t('product_show.contains') } #{ t('product_show.products') }:" %>
           <p class-="mb-5"><%= @product.description %></p><br>
-          <p class="d-inline d-lg-none text-transparent bg-clip-text bg-primary-gradient fs-5 pt-5"><%= '$' + @product.price.to_s + ' / ' + t('product_show.unit') %></p>
-          <div class="mt-5 w-100">
-            <div data-controller="counter"data-productPrice="<%= @product.price %>" class="input-group d-flex d-lg-none w-100 flex-column">
-              <span class="fs-3 invisible" data-counter-target="total">$0</span>
-              <div class="d-flex align-items-center justify-content-between">
-                <div class="d-flex">
-                  <button class="bg-transparent rounded-start border border-dark" data-action="counter#decrement">-</button>
-                  <input class="border border-dark bg-transparent text-center w-25" type="text" data-counter-target="quantity" value="0" readonly>
-                  <button class="bg-transparent rounded-end border border-dark" data-action="counter#increment">+</button>
-                </div>
-                <%= form_with do |f| %>
-                  <%= f.submit t('product_show.buy_sm'), class: 'text-light bg-primary-gradient border-0 rounded w-100 shadow py-1 px-4 px-sm-5 col-5' %>
-                  <div class="row">
-                    <%= f.hidden_field :price, id: 'total-input', class: 'col-12' %>
-                  </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
       <div class="d-flex flex-column ms-2 col-lg-4">
         <div class=" d-flex justify-content-between align-items-center">
-          <p class="fs-3 m-0"><%= @product.provider.name %></p>
+          <p class="fs-3 mb-0 mt-3"><%= @product.provider.name %></p>
           <h4 class="d-none d-lg-flex"><i class="bi bi-heart heart"></i></h4>
         </div>
         <p class="bg-primary-gradient bg-clip-text text-transparent fs-3 p-0"><%= @product.name %></p>
@@ -59,53 +34,59 @@
           </div>
           <p class="text-primary fw-light fs-12px"><%= t('product_show.see_califications') %></p>
         </div>
-        <div data-controller="counter" data-productPrice="<%= @product.price %>">
-          <div class="d-none d-lg-flex">
-            <button class="bg-transparent rounded-start border border-dark" data-action="counter#decrement">-</button>
-            <input class="border border-dark bg-transparent text-center w-25" type="text" data-counter-target="quantity" value="0" readonly>
-            <button class="bg-transparent rounded-end border border-dark" data-action="counter#increment">+</button>
-          </div>
-          <div class="d-none d-lg-flex flex-column">
-            <h4 class="fw-normal mt-5 mb-3"><%= t('product_show.customize_box') %></h4>
-           <% @additionals.each do |additional| %>
-              <div class="form-check form-switch mb-2 d-flex justify-content-start ms-3">
-                <h4>
-                  <input class="form-check-input" type="checkbox" role="switch" data-action="change->counter#updateTotal" data-counter-target="checkbox" data-price="<%= additional.price %>" >
-                </h4>
-                <label class="form-check-label d-flex flex-column mt-1 ms-3">
-                  <p class="m-0"><%= additional.description %></p>
-                  <% if additional.price == 0 %>
-                    <p class="m-0 fs-12px fw-light"><%= t('product_show.no_additional_cost') %></p>
-                  <% else %>
-                    <p class="m-0 fs-12px fw-light"><%= '$' + additional.price.to_s + ' ' + t('product_show.additional') %></p>
-                  <% end %>
-                </label>
-              </div>
-            <% end %>
-            <div class="mt-2">
-              <p class="text-secondary fw-light m-0"><%= t('product_show.more_customization') %></p>
-              <p class="fw-light text-primary"><%= t('product_show.executive') %></p>
+        <div class="d-flex flex-column d-lg-none">
+          <h2 class="fw-normal mt-lg-5 mt-3"><%= t('product_show.description') %></h2>
+          <p class="mt-lg-5 mt-3"><%= t('product_show.each') %> <%= @product.name %> <%= t('product_show.contains') %>:</p>
+          <p class-="mb-5"><%= @product.description %></p><br>
+        </div>
+        <p class="d-inline d-lg-none text-transparent bg-clip-text bg-primary-gradient fs-5 pb-4"><%= "$#{ @product.price.to_s } / #{ t('product_show.unit') }" %></p>
+        <%= form_with do |f| %>
+           <div data-controller="counter" data-productPrice="<%= @product.price %>">
+            <div class="d-flex">
+              <button type="button" class="bg-transparent rounded-start border border-dark" data-action="counter#decrement">-</button>
+              <%= f.number_field :quantity, class: 'border border-dark bg-transparent text-center w-25', value: 0, 'data-counter-target': 'quantity', readonly: true %>
+              <button type="button" class="bg-transparent rounded-end border border-dark" data-action="counter#increment">+</button>
+              <%= f.submit t('product_show.buy_sm'), class: 'text-light bg-primary-gradient border-0 rounded w-100 shadow py-lg-1 ms-5 d-lg-none'  %>
             </div>
-            <%= form_with do |f| %>
-              <div class="d-flex justify-content-between d-hide d-lg-flex mt-5">
-                <%= f.label :price, t('product_show.total'), class: 'fs-3' %>
-                <%= f.hidden_field :price, id: 'total-input' %>
-                <div>
-                  <span class="fs-3" data-counter-target="total">$0</span>
-                  <span class="fs-5">+ <%= t('product_show.iva') %></span>
+            <div class="d-none d-lg-flex flex-column">
+              <h4 class="fw-normal mt-5 mb-3"><%= t('product_show.customize_box') %></h4>
+                <% @additionals.each do |additional| %>
+                  <div class="form-check form-switch mb-2 d-flex justify-content-start ms-3">
+                    <h4>
+                      <input class="form-check-input" type="checkbox" role="switch" data-action="change->counter#updateTotal" data-counter-target="checkbox" data-price="<%= additional.price %>" %>
+                    </h4>
+                    <label class="form-check-label d-flex flex-column mt-1 ms-3">
+                      <p class="m-0"><%= additional.description %></p>
+                      <% if additional.price == 0 %>
+                        <p class="m-0 fs-12px fw-light"><%= t('product_show.no_additional_cost') %></p>
+                      <% else %>
+                        <p class="m-0 fs-12px fw-light"><%= "$#{ additional.price.to_s } #{ t('product_show.additional') }" %></p>
+                      <% end %>
+                    </label>
+                  </div>
+                <% end %>
+                <div class="mt-2">
+                  <p class="text-secondary fw-light m-0"><%= t('product_show.more_customization') %></p>
+                  <p class="fw-light text-primary"><%= t('product_show.executive') %></p>
+                </div>
+                <div class="d-flex justify-content-between d-none d-lg-flex mt-5 align-items-center">
+                  <h3 class="m-0"><%= t('product_show.total') %></h3>
+                  <div>
+                    <span class="fs-3" data-counter-target="total">$0</span>
+                    <span class="fs-5">+ <%= t('product_show.iva') %></span>
+                  </div>
+                </div>
+                <div class="actions mt-5">
+                  <%= f.submit t('product_show.buy'), class: 'text-light bg-primary-gradient border-0 rounded w-100 shadow py-lg-1'  %>
+                  <p class="text-primary text-center fw-light mt-3"><%= t('product_show.print_budget') %></p>
                 </div>
               </div>
-              <div class="actions mt-5">
-                <%= f.submit t('product_show.buy'), class: 'text-light bg-primary-gradient border-0 rounded w-100 shadow py-lg-1' %>
-              </div>
-            <% end %>
-            <p class="text-primary text-center fw-light mt-3"><%= t('product_show.print_budget') %></p>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
-      <%= render 'devise/shared/footer' %>
       <%= render 'categories/shared/footer' %>
+      <%= render 'devise/shared/footer' %>
     </div>
   </div>
 </div>
