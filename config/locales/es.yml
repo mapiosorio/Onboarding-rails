@@ -14,12 +14,26 @@ es:
   greeting: "¡Hola, otra vez!"
   categories: Categorias
   results: resultados
+  confirm_changes: Para confirmar los cambios
   hello: "Hola"
+  personal: Personal
+  personal_information: Información personal
   complete_info: "Por favor, complete su información personal para crear un usuario propio."
   confirm_info: "Por favor, confirma tu información para ingresar a Plan IT."
   have_account: "¿Ya tenés una cuenta?"
   not_have_account: "¿No tienes una cuenta aún?"
   help: "¿Necesitás ayuda?"
+  navbar:
+    dropdown:
+      points_number: 1300
+      points: Puntos
+      see_more: ver más
+      account: Cuenta
+      favourites: Favoritos
+      orders: Pedidos y Consultas
+      campaigns: Campañas y métricas
+      help: Ayudas
+      log_out: Cerrar sesión
   home_page:
     order_by: Ordenar por
     food_box: Food Box
@@ -37,6 +51,8 @@ es:
     login: "Inicia sesión aquí."
     register: "¡Regístrate aquí!"
     forgot_password: "¿Olvidaste tu contraseña?"
+    edit_information: Editar información
+    close_account: 'Cerrar cuenta'
   form_fields:
     name: "Nombre"
     surname: "Apellido"
@@ -48,6 +64,7 @@ es:
     submit_login: "INICIAR SESIÓN"
     change_password: "CAMBIAR CONTRASEÑA"
     position: "Cargo en la empresa"
+    profile_picture: Foto de perfil
   footer:
     number: "Tel: +598 96593615"
     email: "info@planit.com.uy"
@@ -73,15 +90,22 @@ es:
         name: "Nombre"
         surname: "Apellido"
         password: "Contraseña"
-        email: "Email"
+        email: Email
+        phone_number: Número de contacto
+        current_password: Contraseña actual
+        password_confirmation: Las contraseñas
     errors:
       models:
         user:
           attributes:
+            current_password:
+              blank: no puede estar en blanco
+            phone_number:
+              taken: ya esta en uso
             reset_password_token:
               invalid: "no válido"
             password_confirmation:
-              confirmation: "no coincide"
+              confirmation: "no coinciden"
             company:
               blank: "no puede estar en blanco"
             surname:

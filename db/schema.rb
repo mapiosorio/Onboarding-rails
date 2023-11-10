@@ -85,6 +85,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_30_173950) do
     t.string "recipient_name", null: false
     t.string "recipient_phone_number", null: false
     t.string "personalization"
+    t.bigint "rut"
+    t.string "company_name"
     t.bigint "user_id", null: false
     t.bigint "product_id", null: false
     t.datetime "created_at", null: false

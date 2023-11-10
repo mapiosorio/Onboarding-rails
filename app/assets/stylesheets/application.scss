@@ -51,6 +51,10 @@
   border-image-slice: 1;
 }
 
+.fs-12px {
+  font-size: 12px;
+}
+
 @include media-breakpoint-up(lg) {
   .fs-lg-2 {
     font-size: 35px;
@@ -68,5 +72,9 @@
 @include media-breakpoint-down(lg) {
   .position-lg-static {
     position: static !important;
+  }
+
+  .bg-lg-custom-gray {
+    background-color: rgba(251, 251, 251, 1) !important;
   }
 }
