@@ -31,8 +31,8 @@ export default class extends Controller {
     const productPrice = parseFloat(this.element.getAttribute("data-productPrice"));
     const quantity = parseFloat(this.quantityTarget.value);
     const additionals = this.additionalsCost();
-    const total = quantity * productPrice + additionals;
+    const total = quantity * (productPrice + additionals);
     this.totalTarget.innerHTML = `$${total}`;
-    document.getElementById('total-input').value = total + 0.20 * total;
+    document.getElementById('total-input').value = total;
   }
 }
