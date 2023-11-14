@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
-  permit_params :email, :encrypted_password, :password, :password_confirmation, :name, :surname, :company, :position, :photo
+  permit_params :email, :encrypted_password, :password, :password_confirmation, :name, :surname, :company, :position, :photo, :phone_number
 
   index do
     selectable_column
@@ -23,6 +23,7 @@ ActiveAdmin.register User do
       f.input :name
       f.input :surname
       f.input :email
+      f.input :phone_number
       f.input :company
       f.input :position
       if f.object.new_record?

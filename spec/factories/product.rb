@@ -11,5 +11,12 @@ FactoryBot.define do
     sugar_free { Faker::Boolean.boolean }
     finger_food { Faker::Boolean.boolean }
     rating { Faker::Number.decimal(l_digits: 1, r_digits: 2)}
+    transient do
+      additionals_count { 3 }
+    end
+
+    after(:create) do |product, evaluator|
+      create_list(:additional, evaluator.additionals_count, product: product)
+    end
   end
 end
