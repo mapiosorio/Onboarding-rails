@@ -10,7 +10,7 @@ export default class extends Controller {
   }
 
   decrement() {
-    if (this.quantityTarget.value > 0) {
+    if (this.quantityTarget.value > 1) {
       this.quantityTarget.value--;
       this.updateTotal();
     }

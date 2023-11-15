@@ -1,3 +1,4 @@
+<%= render 'card_modal', card: @card %>
 <div class="d-none d-lg-flex">
   <%= render 'categories/shared/navbar' %>
 </div>
@@ -41,7 +42,7 @@
           <div class="d-lg-flex justify-content-between mt-3 d-none">
             <% if @additionals.any? { |additional| additional.description == 'Agregar logo de tu empresa' } %>
               <div>
-                <%= f.label :company_logo, t('order.company_logo'), class: '' %>
+                <%= f.label :company_logo, t('order.company_logo') %>
                 <p class="fs-12px fw-light"><%= t('order.company_logo_info') %></p>
               </div>
               <div>
@@ -70,9 +71,12 @@
             <%= render 'product_summary', product: @product, additionals: @additionals %>
 
             <div class="mx-5 mt-5 d-flex flex-column">
-              <h5 class="fw-light"><%= t('order.payment') %></h5>
+              <h5 class="fw-light"> <%= t('order.payment') %> </h5>
+              <%= turbo_frame_tag 'payment' do %>
+                <%= render partial: 'cards/select_card', locals: { cards: current_user.cards } %>
+              <% end %>
             </div>
-
+            <a class="text-primary mx-5" data-bs-toggle="modal" data-bs-target="#cardModal"><%= t('card.add') %></a>
             <div class="mx-5 mt-5">
               <h5 class="fw-light"><%= t('order.billing.title') %></h5>
               <%= f.text_field :rut, class: 'border-0 border-bottom border-secondary w-100 bg-transparent pb-2', placeholder: t('order.billing.rut') %>

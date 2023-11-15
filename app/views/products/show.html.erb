@@ -46,14 +46,9 @@
           <div data-controller="counter" data-productPrice="<%= @product.price %>">
             <div class="d-flex">
               <button type="button" class="bg-transparent rounded-start border border-dark" data-action="counter#decrement">-</button>
-              <%= f.text_field :quantity, class: 'border border-dark bg-transparent text-center w-50px', value: 0, 'data-counter-target': 'quantity', readonly: true %>
+              <%= f.text_field :quantity, class: 'border border-dark bg-transparent text-center w-50px', value: 1, 'data-counter-target': 'quantity', readonly: true %>
               <button type="button" class="bg-transparent rounded-end border border-dark" data-action="counter#increment">+</button>
               <%= f.submit t('product_show.buy_sm'), class: 'text-light bg-primary-gradient border-0 rounded w-100 shadow py-lg-1 ms-5 d-lg-none'  %>
-            </div>
-            <div class="invalid-feedback d-block">
-              <% @order.errors[:quantity].each do |message| %>
-                <div><%= message %></div>
-              <% end %>
             </div>
             <div class="d-none d-lg-flex flex-column">
               <h4 class="fw-normal mt-5 mb-3"><%= t('product_show.customize_box') %></h4>
@@ -79,12 +74,12 @@
                 <div class="d-flex justify-content-between d-none d-lg-flex mt-5 align-items-center">
                   <h3 class="m-0"><%= t('product_show.total') %></h3>
                   <div>
-                    <span class="fs-3" data-counter-target="total">$0</span>
+                    <span class="fs-3" data-counter-target="total"><%= @product.price %></span>
                     <span class="fs-5">+ <%= t('product_show.iva') %></span>
                   </div>
                 </div>
                 <div class="actions mt-5">
-                  <%= f.submit t('product_show.buy'), class: 'text-light bg-primary-gradient border-0 rounded w-100 shadow py-lg-1' %>
+                  <%= f.submit t('product_show.buy'), data: { turbo: false }, class: 'text-light bg-primary-gradient border-0 rounded w-100 shadow py-lg-1' %>
                   <p class="text-primary text-center fw-light mt-3"><%= t('product_show.print_budget') %></p>
                 </div>
               </div>

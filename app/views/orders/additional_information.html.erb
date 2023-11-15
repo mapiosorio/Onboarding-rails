@@ -1,3 +1,4 @@
+<%= render 'card_modal', card: @card %>
 <%= link_to new_order_path(order: params.permit![:order]), class: 'd-flex gap-3 d-lg-none text-dark text-dark pt-4 ms-3' do %>
   <i class="bi bi-chevron-left"></i>
   <span><%= t('product_show.back') %></span>
@@ -19,13 +20,16 @@
     <%= f.hidden_field :recipient_phone_number, value: @order.recipient_phone_number %>
     <%= f.hidden_field :re_delivery, value: @order.re_delivery %>
     <%= f.hidden_field :delivery_direction, value: @order.delivery_direction %>
-    <% error_attributes = [:rut, :company_name] %>
-    <%= render 'errors_messages', resource: @order, error_attributes: error_attributes %>
+    <%= render "devise/shared/error_messages", resource: @order %>
     <h2 class="bg-primary-gradient bg-clip-text text-transparent"><%= t('order.order_summary') %></h2>
-    <%= render 'product_summary', product: @product %>
-    <div class="mt-5">
-      <h5 class="fw-light"><%= t('order.payment') %></h5>
+    <%= render 'product_summary', product: @product, additionals: @additionals %>
+    <div class="mt-5 d-flex flex-column">
+      <h5 class="fw-light"> <%= t('order.payment') %> </h5>
+      <%= turbo_frame_tag 'payment' do %>
+        <%= render partial: 'cards/select_card', locals: { cards: current_user.cards } %>
+      <% end %>
     </div>
+    <a class="text-primary" data-bs-toggle="modal" data-bs-target="#cardModal"><%= t('card.add') %></a>
     <div class="mt-5">
       <h5 class="fw-light"><%= t('order.billing.title') %></h5>
       <%= f.text_field :rut, class: 'border-0 border-bottom border-secondary w-100 bg-transparent pb-2', placeholder: t('order.billing.rut') %>

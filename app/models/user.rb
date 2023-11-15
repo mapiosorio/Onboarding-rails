@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_one_attached :photo
   has_many :orders
+  has_many :cards
 
   validates_presence_of :name, :surname, :company, :position
   validates :phone_number, uniqueness: true

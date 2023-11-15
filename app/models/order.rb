@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   has_one_attached :company_logo
   belongs_to :user
   belongs_to :product
+  belongs_to :card
   has_and_belongs_to_many :additionals
 
   validates :quantity, presence: true, numericality: { greater_than: 0 }
