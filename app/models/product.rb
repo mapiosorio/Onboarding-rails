@@ -4,5 +4,5 @@ class Product < ApplicationRecord
   belongs_to :category
   has_and_belongs_to_many :additionals
 
-  validates :name, :price, :provider, :category, :rating, presence: true
+  validates_presence_of :name, :price, :provider, :category, :rating
 end
