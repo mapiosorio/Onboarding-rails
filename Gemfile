@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.0.0"
 
-gem 'activeadmin'
+gem 'activeadmin', '2.13.1'
 
 gem 'ckeditor'
 

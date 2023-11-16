@@ -1,6 +1,7 @@
 ActiveAdmin.register Product do
 
-  permit_params :image, :description, :name, :price, :provider_id, :category_id, :rating, :sharing, :vegan, :sugar_free, :gluten_free, :finger_food, additional_ids: []
+  permit_params :image, :description, :name, :price, :provider_id, :category_id, :rating, :sharing, :vegan,
+  :sugar_free, :gluten_free, :finger_food, additional_ids: []
 
   index do
     selectable_column
@@ -36,7 +37,8 @@ ActiveAdmin.register Product do
       end
 
       f.inputs 'Additionals' do
-        f.input :additionals, as: :check_boxes, collection: Additional.all.map { |additional| [" #{additional.description} ($#{additional.price})", additional.id] }
+        f.input :additionals, as: :check_boxes, collection: Additional.all.map { |additional| ["#{additional.description}
+        ($#{additional.price})", additional.id] }
       end
 
     end
