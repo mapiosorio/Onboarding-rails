@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new(order_params)
     @product = Product.find(@order.product_id)
+
     if @order.quantity > 0
       @additionals = Additional.where(id: @order.additional_ids)
       calculate_cost
@@ -16,7 +17,8 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @product = Product.find(@order.product_id)
     @additionals = Additional.where(id: @order.additional_ids)
-    if !@order.recipient_name.blank? && !@order.recipient_phone_number.blank? && !@order.delivery_date.blank? && !@order.delivery_time.blank? && !@order.delivery_direction.blank?
+
+    if all_required_fields_present?(@order)
       calculate_cost
     elsif !@order.valid?
       render :new
@@ -26,16 +28,14 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @additionals = Additional.where(id: @order.additional_ids)
+
     if @order.save
       redirect_to root_path
     else
       @product = Product.find(@order.product_id)
       referer_path = URI.parse(request.referer).path
-      if referer_path == additional_information_new_order_path
-        render :additional_information, status: :unprocessable_entity
-      else
-        render :new, status: :unprocessable_entity
-      end
+      view = referer_path == additional_information_new_order_path ? :additional_information : :new
+      render view, status: :unprocessable_entity
     end
   end
 
@@ -47,11 +47,21 @@ class OrdersController < ApplicationController
 
   def calculate_cost
     additionals_cost = 0
+
     if @additionals.present?
       additionals_cost = @additionals.sum(&:price)
     end
+
     @order.subtotal = @order.quantity * (@product.price + additionals_cost)
     @order.taxes = @order.subtotal * 0.22
     @order.total = @order.taxes + @order.subtotal + @product.provider.delivery_cost
+  end
+
+  def all_required_fields_present?(order)
+    order.recipient_name.present? &&
+    order.recipient_phone_number.present? &&
+    order.delivery_date.present? &&
+    order.delivery_time.present? &&
+    order.delivery_direction.present?
   end
 end

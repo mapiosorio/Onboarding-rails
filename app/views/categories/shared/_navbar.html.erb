@@ -52,7 +52,7 @@
     <div class="d-none d-lg-flex col justify-content-end align-items-center mt-5">
       <i class="bi bi-bell me-5"></i>
       <% image_url = current_user.photo.attached? ? current_user.photo : 'default_profile_picture.jpeg' %>
-      <%= image_tag(image_url, class: 'img-fluid rounded-circle default-profile-picture me-3', alt: 'Profile picture') %>
+      <%= image_tag(image_url, class: 'img-fluid rounded-circle me-3', width: '50px', height: '50px', alt: 'Profile picture') %>
       <div class="d-flex flex-column">
         <%= current_user.name %>
         <%= current_user.surname %>

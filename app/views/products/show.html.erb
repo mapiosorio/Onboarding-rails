@@ -6,7 +6,7 @@
   <%= image_tag(image_url, class: 'w-100 d-flex d-lg-none position-relative', alt: 'Product picture') %>
   <%= link_to category_path(@product.category.id), class: 'text-dark position-absolute top-0 text-white ms-3 mt-4' do %>
     <i class="bi bi-chevron-left"></i>
-  <span><%= t('product_show.back')%></span>
+    <span><%= t('product_show.back')%></span>
   <% end %>
   <i class="text-white bi bi-heart heart position-absolute heart top-0 me-3 mt-4 end-0"></i>
   <div class="mx-lg-5 px-lg-5 mx-3">
@@ -39,7 +39,7 @@
           <p class="mt-lg-5 mt-3"><%= t('product_show.each') %> <%= @product.name %> <%= t('product_show.contains') %>:</p>
           <p class-="mb-5"><%= @product.description %></p><br>
         </div>
-        <p class="d-inline d-lg-none text-transparent bg-clip-text bg-primary-gradient fs-5 pb-4"><%= '$' + @product.price.to_s + ' / ' + t('product_show.unit') %></p>
+        <p class="d-inline d-lg-none text-transparent bg-clip-text bg-primary-gradient fs-5 pb-4"><%= "$#{ @product.price.to_s } / #{ t('product_show.unit') }" %></p>
         <%= form_with(model: @order, url: new_order_path, local: true, method: :get) do |f| %>
           <%= f.hidden_field :product_id, value: @product.id %>
           <%= f.hidden_field :user_id, value: current_user.id %>
@@ -67,7 +67,7 @@
                       <% if additional.price == 0 %>
                         <p class="m-0 fs-12px fw-light"><%= t('product_show.no_additional_cost') %></p>
                       <% else %>
-                        <p class="m-0 fs-12px fw-light"><%= '$' + additional.price.to_s + ' ' + t('product_show.additional') %></p>
+                        <p class="m-0 fs-12px fw-light"><%= "$#{ additional.price.to_s } #{ t('product_show.additional') }" %></p>
                       <% end %>
                     </label>
                   </div>
