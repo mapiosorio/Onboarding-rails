@@ -73,8 +73,17 @@
 }
 
 @include media-breakpoint-down(lg) {
+  .btn-lg-custom {
+    border: 1px solid #7D7D7D !important;
+    color: #7D7D7D !important;
+  }
+
   .position-lg-static {
     position: static !important;
+  }
+
+  .fs-lg-12px {
+    font-size: 12px;
   }
 
   .bg-lg-custom-gray {

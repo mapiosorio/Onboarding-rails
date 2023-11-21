@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
     @additionals = Additional.where(id: @order.additional_ids)
 
     if @order.save
-      redirect_to root_path
+      redirect_to order_completed_orders_path
     else
       @card = Card.new
       @cards = current_user.cards
