@@ -1,6 +1,24 @@
 es:
+  date:
+    formats:
+      default: "%d de %B de %Y"
+    month_names:
+      - ~
+      - Enero
+      - Febrero
+      - Marzo
+      - Abril
+      - Mayo
+      - Junio
+      - Julio
+      - Agosto
+      - Septiembre
+      - Octubre
+      - Noviembre
+      - Diciembre
   time:
     formats:
+      default: "%d de %B de %Y a las %H:%M:%S"
       long: "%Y-%m-%d %H:%M:%S"
   title:
     start: "Comienza a"
@@ -41,6 +59,14 @@ es:
     add: Añadir una tarjeta
     select: Seleccione una tarjeta
   order:
+    index:
+      count: Usted realizó %{order_amount} órdenes
+      created: Orden creada el
+      summary: La orden para %{recipient_name} será entregada el %{delivery_date} a las %{delivery_time} en %{delivery_direction}
+      amount_product: "Cantidad de %{product_name}: %{quantity}"
+      payment_info: Información de pago
+      total_to_pay: "Total a pagar: $%{total_amount}"
+      card_used: "Tarjeta usada: %{masked_card_number}"
     billing:
       title: Información de facturacion
       rut: RUT
