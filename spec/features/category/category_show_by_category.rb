@@ -22,4 +22,3 @@ RSpec.describe 'show products by category', type: :feature do
     end
   end
 end
-

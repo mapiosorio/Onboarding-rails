@@ -11,8 +11,8 @@ RSpec.feature 'user edit personal information', type: :feature do
       attach_file('Foto de perfil', File.absolute_path('app/assets/images/profile_picture.png'))
       fill_in 'Nombre', with: 'name'
       fill_in 'Apellido', with: 'surname'
-      fill_in 'Contraseña actual' , with: user.password
-      fill_in 'Número de contacto', with: 99999999
+      fill_in 'Contraseña actual', with: user.password
+      fill_in 'Número de contacto', with: 99_999_999
       click_button 'Editar información'
 
       expect(page).to have_current_path(root_path)
@@ -21,7 +21,7 @@ RSpec.feature 'user edit personal information', type: :feature do
       expect(user.photo).to be_present
       expect(user.name).to eq('name')
       expect(user.surname).to eq('surname')
-      expect(user.phone_number). to eq(99999999)
+      expect(user.phone_number).to eq(99_999_999)
     end
   end
 

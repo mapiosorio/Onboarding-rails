@@ -64,11 +64,10 @@
             </div>
           </div>
 
-
           <div class="bg-white col-4 py-5 position-absolute end-0 me-5 bottom-140px d-none d-lg-flex flex-column">
             <h2 class="text-center"><%= t('order.order_summary') %></h2>
 
-            <%= render 'product_summary', product: @product %>
+            <%= render 'product_summary', product: @product, additionals: @additionals %>
 
             <div class="mx-5 mt-5 d-flex flex-column">
               <h5 class="fw-light"><%= t('order.payment') %></h5>

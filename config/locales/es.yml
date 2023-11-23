@@ -69,7 +69,7 @@ es:
       date: Fecha de entrega
       cost: Costo de envío
       surprise_delivery: Entrega sorpresa
-      surprise_delivery_info: Si el envío no es sorpresa, podríamos contactar al destinatario de la entrega.s
+      surprise_delivery_info: Si el envío no es sorpresa, podríamos contactar al destinatario de la entrega.
   welcome: "¡Bienvenido a Plan IT!"
   greeting: "¡Hola, otra vez!"
   categories: Categorias
@@ -166,7 +166,7 @@ es:
         delivery_direction: la Dirección de entrega
     errors:
       messages:
-        record_invalid: "El registro no es válido"
+        record_invalid: El registro no es válido
         blank: no puede estar en blanco
       models:
         order:

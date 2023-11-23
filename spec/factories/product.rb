@@ -7,10 +7,10 @@ FactoryBot.define do
     category { association(:category) }
     vegan { Faker::Boolean.boolean }
     sharing { Faker::Boolean.boolean }
-    gluten_free { Faker::Boolean.boolean}
+    gluten_free { Faker::Boolean.boolean }
     sugar_free { Faker::Boolean.boolean }
     finger_food { Faker::Boolean.boolean }
-    rating { Faker::Number.decimal(l_digits: 1, r_digits: 2)}
+    rating { Faker::Number.decimal(l_digits: 1, r_digits: 2) }
     transient do
       additionals_count { 3 }
     end

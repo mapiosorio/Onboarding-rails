@@ -64,7 +64,7 @@
                     </h4>
                     <label class="form-check-label d-flex flex-column mt-1 ms-3">
                       <p class="m-0"><%= additional.description %></p>
-                      <% if additional.price == 0 %>
+                      <% if additional.price.zero? %>
                         <p class="m-0 fs-12px fw-light"><%= t('product_show.no_additional_cost') %></p>
                       <% else %>
                         <p class="m-0 fs-12px fw-light"><%= "$#{ additional.price.to_s } #{ t('product_show.additional') }" %></p>

@@ -6,5 +6,5 @@ class Order < ApplicationRecord
 
   validates :quantity, presence: true, numericality: { greater_than: 0 }
   validates_presence_of :total, :subtotal, :taxes, :delivery_date, :delivery_time, :recipient_name, :recipient_phone_number, :rut, :company_name,
-  :delivery_direction, :user, :product, presence: true
+                        :delivery_direction, :user, :product, presence: true
 end

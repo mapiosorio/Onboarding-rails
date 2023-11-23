@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-
   def new
     @order = Order.new(order_params)
     @product = Product.find(@order.product_id)
@@ -7,7 +6,7 @@ class OrdersController < ApplicationController
     if @order.quantity > 0
       @additionals = Additional.where(id: @order.additional_ids)
       calculate_cost
-    elsif !@order.valid?
+    elsif @order.invalid?
       @additionals = @product.additionals
       render 'products/show'
     end
@@ -20,7 +19,7 @@ class OrdersController < ApplicationController
 
     if all_required_fields_present?(@order)
       calculate_cost
-    elsif !@order.valid?
+    elsif @order.invalid?
       render :new
     end
   end
@@ -42,15 +41,14 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:user_id, :product_id, :quantity, :total, :subtotal, :taxes, :surprise_delivery, :delivery_time, :delivery_date, :recipient_name, :recipient_phone_number, :personalization, :delivery_direction, :personalization_message, :re_delivery, :rut, :company_logo, :company_name, additional_ids: [])
+    params.require(:order).permit(:user_id, :product_id, :quantity, :total, :subtotal, :taxes, :surprise_delivery,
+                                  :delivery_time, :delivery_date, :recipient_name, :recipient_phone_number, :personalization, :delivery_direction, :personalization_message, :re_delivery, :rut, :company_logo, :company_name, additional_ids: [])
   end
 
   def calculate_cost
     additionals_cost = 0
 
-    if @additionals.present?
-      additionals_cost = @additionals.sum(&:price)
-    end
+    additionals_cost = @additionals.sum(&:price) if @additionals.present?
 
     @order.subtotal = @order.quantity * (@product.price + additionals_cost)
     @order.taxes = @order.subtotal * 0.22
