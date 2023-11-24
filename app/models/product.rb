@@ -3,6 +3,8 @@ class Product < ApplicationRecord
   belongs_to :provider
   belongs_to :category
   has_and_belongs_to_many :additionals
+  has_many :orders
 
-  validates_presence_of :name, :price, :provider, :category, :rating
+  validates :name, :price, :provider, :category, :rating, presence: true
+  validates :price, numericality: { greater_than: 0 }
 end

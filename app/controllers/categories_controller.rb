@@ -29,8 +29,8 @@ class CategoriesController < ApplicationController
 
   def apply_sorting
     sort_option = params[:sort]
-    if sort_option
-      @products = @products.order(price: sort_option.to_sym)
-    end
+    return unless sort_option
+
+    @products = @products.order(price: sort_option.to_sym)
   end
 end

@@ -11,7 +11,7 @@ RSpec.feature 'user registration', type: :feature do
       fill_in 'Nombre', with: new_user_attributes[:name]
       fill_in 'Apellido', with: new_user_attributes[:surname]
       fill_in 'Email', with: new_user_attributes[:email]
-      fill_in 'Contraseña' , with: new_user_attributes[:password]
+      fill_in 'Contraseña', with: new_user_attributes[:password]
       fill_in 'Nombre de su empresa', with: new_user_attributes[:company]
       click_button 'REGISTRARSE'
 
@@ -26,7 +26,7 @@ RSpec.feature 'user registration', type: :feature do
       fill_in 'Nombre', with: ''
       fill_in 'Apellido', with: ''
       fill_in 'Email', with: ''
-      fill_in 'Contraseña' , with: ''
+      fill_in 'Contraseña', with: ''
       fill_in 'Nombre de su empresa', with: ''
       click_button 'REGISTRARSE'
 
@@ -45,7 +45,7 @@ RSpec.feature 'user registration', type: :feature do
       fill_in 'Nombre', with: new_user_attributes[:name]
       fill_in 'Apellido', with: new_user_attributes[:surname]
       fill_in 'Email', with: new_user_attributes[:email]
-      fill_in 'Contraseña' , with: 'short'
+      fill_in 'Contraseña', with: 'short'
       fill_in 'Nombre de su empresa', with: new_user_attributes[:company]
       click_button 'REGISTRARSE'
 
@@ -60,7 +60,7 @@ RSpec.feature 'user registration', type: :feature do
       fill_in 'Nombre', with: new_user_attributes[:name]
       fill_in 'Apellido', with: new_user_attributes[:surname]
       fill_in 'Email', with: user.email
-      fill_in 'Contraseña' , with: new_user_attributes[:password]
+      fill_in 'Contraseña', with: new_user_attributes[:password]
       fill_in 'Nombre de su empresa', with: new_user_attributes[:company]
       click_button 'REGISTRARSE'
 

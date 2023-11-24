@@ -27,14 +27,18 @@ end
     sharing: Faker::Boolean.boolean,
     gluten_free: Faker::Boolean.boolean,
     sugar_free: Faker::Boolean.boolean,
-    finger_food: Faker::Boolean.boolean,
+    finger_food: Faker::Boolean.boolean
   )
 
   product.provider = Provider.all.sample
   product.category = Category.all.sample
-  product.image.attach(io: File.open(Rails.root.join('app/assets/images/filipa_mini_box.png')), filename: 'filipa_mini_box.png')
+  product.image.attach(io: File.open(Rails.root.join('app/assets/images/filipa_mini_box.png')),
+                       filename: 'filipa_mini_box.png')
   product.additionals << Additional.all
   product.save
 end
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+if Rails.env.development?
+  AdminUser.create!(email: 'admin@example.com', password: 'password',
+                    password_confirmation: 'password')
+end

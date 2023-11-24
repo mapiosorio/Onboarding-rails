@@ -1,0 +1,40 @@
+<%= link_to new_order_path(order: params.permit![:order]), class: 'd-flex gap-3 d-lg-none text-dark text-dark pt-4 ms-3' do %>
+  <i class="bi bi-chevron-left"></i>
+  <span><%= t('product_show.back') %></span>
+<% end %>
+<div class="mt-5 mx-4">
+  <%= form_with(model: @order, url: orders_path) do |f| %>
+    <%= f.hidden_field :product_id, value: @order.product_id %>
+    <%= f.hidden_field :user_id, value: @order.user_id %>
+    <%= f.hidden_field :quantity, value: @order.quantity %>
+    <%= f.hidden_field :total, value: @order.total %>
+    <%= f.hidden_field :subtotal, value: @order.subtotal %>
+    <%= f.hidden_field :taxes, value: @order.taxes %>
+    <%= f.hidden_field :recipient_name, value: @order.recipient_name %>
+    <%= f.hidden_field :recipient_phone_number, value: @order.recipient_phone_number %>
+    <%= f.hidden_field :delivery_date, value: @order.delivery_date %>
+    <%= f.hidden_field :delivery_time, value: @order.delivery_time %>
+    <%= f.hidden_field :personalization_message, value: @order.personalization_message %>
+    <%= f.hidden_field :surprise_delivery, value: @order.surprise_delivery %>
+    <%= f.hidden_field :recipient_phone_number, value: @order.recipient_phone_number %>
+    <%= f.hidden_field :re_delivery, value: @order.re_delivery %>
+    <%= f.hidden_field :delivery_direction, value: @order.delivery_direction %>
+    <% error_attributes = [:rut, :company_name] %>
+    <%= render 'errors_messages', resource: @order, error_attributes: error_attributes %>
+    <h2 class="bg-primary-gradient bg-clip-text text-transparent"><%= t('order.order_summary') %></h2>
+    <%= render 'product_summary', product: @product %>
+    <div class="mt-5">
+      <h5 class="fw-light"><%= t('order.payment') %></h5>
+    </div>
+    <div class="mt-5">
+      <h5 class="fw-light"><%= t('order.billing.title') %></h5>
+      <%= f.text_field :rut, class: 'border-0 border-bottom border-secondary w-100 bg-transparent pb-2', placeholder: t('order.billing.rut') %>
+      <%= f.text_field :company_name, class: 'border-0 border-bottom border-secondary w-100 bg-transparent pb-2 mt-3', placeholder: t('order.billing.company_name') %>
+    </div>
+    <%= render 'order_price_summary', order: @order, product: @product %>
+    <div class="mt-4">
+      <%= f.submit t('order.buy'), class: 'text-light w-100 bg-primary-gradient border-0 rounded shadow py-2' %>
+    </div>
+    <%= render 'devise/shared/footer' %>
+  <% end %>
+</div>

@@ -1,0 +1,130 @@
+<div class="d-none d-lg-flex">
+  <%= render 'categories/shared/navbar' %>
+</div>
+<div class="bg-custom-gray pt-lg-5 mt-lg-5">
+  <%= link_to product_path(@order.product_id), class: 'd-flex gap-3 d-lg-none text-dark text-dark mb-3 pt-4 ms-4' do %>
+    <i class="bi bi-chevron-left"></i>
+    <span><%= t('product_show.back') %></span>
+  <% end %>
+  <div class="mx-lg-5 px-lg-5 mx-3 mt-lg-5 pt-lg-5 pt-4 row position-relative">
+    <div class="d-none d-lg-block">
+      <%= form_with(model: @order, url: orders_path) do |f| %>
+        <%= render 'devise/shared/error_messages', resource: @order %>
+        <%= f.hidden_field :product_id, value: @order.product_id %>
+        <%= f.hidden_field :user_id, value: @order.user_id %>
+        <%= f.hidden_field :quantity, value: @order.quantity %>
+        <%= f.hidden_field :total, value: @order.total %>
+        <%= f.hidden_field :subtotal, value: @order.subtotal %>
+        <%= f.hidden_field :taxes, value: @order.taxes %>
+        <% @order.additional_ids.each do |additional_id| %>
+          <%= f.hidden_field :additional_ids, multiple: true, value: additional_id %>
+        <% end %>
+        <div class="col-lg-6">
+          <p class="bg-primary-gradient bg-clip-text text-transparent fs-2 mt-5"><%= t('order.delivery_details') %></p>
+          <%= render 'recipient_information', f: f %>
+          <div class="form-check form-switch mt-5">
+            <h4 class="ms-3"><%= f.check_box :surprise_delivery, class: 'form-check-input' %></h4>
+            <div class="ms-5">
+              <%= f.label :surprise_delivery, t('order.delivery_info.surprise_delivery'), class: 'form-check-label' %>
+              <p class="fs-12px fw-light"><%= t('order.delivery_info.surprise_delivery_info') %></p>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <% if @additionals.any? { |additional| additional.description == 'Agregar una tarjeta con mensaje' } %>
+              <h2><%= t('order.personalization') %></h2>
+              <p><span class="d-none d-lg-inline-flex"><%= t('order.personalization_select') %></span> <%= t('order.personalization_info') %></p>
+              <%= f.text_area :personalization_message, class: 'w-100 bg-custom-gray-dark text pb-3', placeholder: t('order.write_message') %>
+            <% end %>
+          </div>
+
+          <div class="d-lg-flex justify-content-between mt-3 d-none">
+            <% if @additionals.any? { |additional| additional.description == 'Agregar logo de tu empresa' } %>
+              <div>
+                <%= f.label :company_logo, t('order.company_logo'), class: '' %>
+                <p class="fs-12px fw-light"><%= t('order.company_logo_info') %></p>
+              </div>
+              <div>
+                <label class="btn btn-outline-secondary px-5 shadow">
+                  <%= t('order.upload_file') %>
+                  <span class="d-none">
+                    <%= f.file_field :company_logo %>
+                  </span>
+                </label>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="mt-4">
+            <h2><%= t('order.delivery_info.delivery_bounces') %></h2>
+            <p><%= t('order.delivery_info.delivery_bounces_info') %></p>
+            <div>
+              <%= f.check_box :re_delivery %>
+              <%= f.label :re_delivery, t('order.delivery_info.re_delivery'), class: 'ms-1' %>
+            </div>
+          </div>
+
+          <div class="bg-white col-4 py-5 position-absolute end-0 me-5 bottom-140px d-none d-lg-flex flex-column">
+            <h2 class="text-center"><%= t('order.order_summary') %></h2>
+
+            <%= render 'product_summary', product: @product, additionals: @additionals %>
+
+            <div class="mx-5 mt-5 d-flex flex-column">
+              <h5 class="fw-light"><%= t('order.payment') %></h5>
+            </div>
+
+            <div class="mx-5 mt-5">
+              <h5 class="fw-light"><%= t('order.billing.title') %></h5>
+              <%= f.text_field :rut, class: 'border-0 border-bottom border-secondary w-100 bg-transparent pb-2', placeholder: t('order.billing.rut') %>
+              <%= f.text_field :company_name, class: 'border-0 border-bottom border-secondary w-100 bg-transparent pb-2 mt-3', placeholder: t('order.billing.company_name') %>
+            </div>
+
+            <%= render 'order_price_summary', order: @order, product: @product %>
+
+            <div class="mx-5 mt-5">
+              <%= f.submit t('order.buy'), class: 'text-light w-100 bg-primary-gradient border-0 rounded shadow py-2' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <div class="d-lg-none">
+    <%= form_with(model: @order, url: additional_information_new_order_path, method: :get) do |f| %>
+      <% error_attributes = [:recipient_name, :recipient_phone_number, :delivery_date, :delivery_time, :delivery_direction] %>
+      <%= render 'errors_messages', resource: @order, error_attributes: error_attributes %>
+      <%= f.hidden_field :product_id, value: @order.product_id %>
+      <%= f.hidden_field :user_id, value: @order.user_id %>
+      <%= f.hidden_field :quantity, value: @order.quantity %>
+      <div class="col-lg-6">
+        <p class="bg-primary-gradient bg-clip-text text-transparent fs-2"><%= t('order.delivery_details') %></p>
+        <%= render 'recipient_information', f: f %>
+        <div class="form-check form-switch mt-5">
+          <h4 class="ms-3"><%= f.check_box :surprise_delivery, class: 'form-check-input' %></h4>
+          <div class="ms-5">
+            <%= f.label :surprise_delivery, t('order.delivery_info.surprise_delivery'), class: 'form-check-label' %>
+            <p class="fs-12px fw-light"><%= t('order.delivery_info.surprise_delivery_info') %></p>
+          </div>
+        </div>
+        <div class="pt-4">
+          <h2><%= t('order.personalization') %></h2>
+          <p><%= t('order.personalization_info') %></p>
+          <%= f.text_area :personalization_message, class: 'w-100 bg-custom-gray-dark text pb-3', placeholder: t('order.write_message') %>
+        </div>
+
+        <div class="mt-5 mt-lg-4">
+          <h2><%= t('order.delivery_info.delivery_bounces') %></h2>
+          <p><%= t('order.delivery_info.delivery_bounces_info') %></p>
+          <div>
+            <%= f.check_box :re_delivery %>
+            <%= f.label :re_delivery, t('order.delivery_info.re_delivery'), class: 'ms-1' %>
+          </div>
+        </div>
+        <div class="mt-5">
+          <%= f.submit t('order.validate_purchase'), class: 'text-light w-100 bg-primary-gradient border-0 rounded shadow py-2' %>
+        </div>
+      </div>
+    <% end %>
+    <%= render 'devise/shared/footer' %>
+  </div>
+  <%= render 'categories/shared/footer' %>
+</div>

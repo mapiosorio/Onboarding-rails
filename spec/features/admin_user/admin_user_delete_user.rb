@@ -11,12 +11,12 @@ RSpec.describe 'delete user', type: :feature do
   it 'deletes the user' do
     visit admin_users_path
 
-      expect(page).to have_content(user.email)
-      click_link('Eliminar')
+    expect(page).to have_content(user.email)
+    click_link('Eliminar')
 
-      accept_alert
+    accept_alert
 
-      expect(page).to have_no_content(user.email)
-      expect(User.count).to eq(0)
+    expect(page).to have_no_content(user.email)
+    expect(User.count).to eq(0)
   end
 end

@@ -8,7 +8,8 @@ $info: #B3B3B3;
 
 $custom-colors: (
   "custom-gray": rgba(251, 251, 251, 1),
-  "custom-light-blue": rgb(155, 199, 255, 1)
+  "custom-light-blue": rgb(155, 199, 255, 1),
+  "custom-gray-dark": rgb(238, 238, 238, 1)
 );
 
 $theme-colors: map-merge($map1: $theme-colors, $map2: $custom-colors);

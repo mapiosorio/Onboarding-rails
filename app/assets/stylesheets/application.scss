@@ -40,9 +40,8 @@
   background-clip: text;
 }
 
-.default-profile-picture {
-  height: 50px;
-  width: 50px;
+.bottom-140px {
+  bottom: 140px;
 }
 
 .border-primary-gradient {
@@ -53,6 +52,10 @@
 
 .fs-12px {
   font-size: 12px;
+}
+
+.w-50px {
+  width: 50px;
 }
 
 @include media-breakpoint-up(lg) {

@@ -40,17 +40,38 @@
           <p class-="mb-5"><%= @product.description %></p><br>
         </div>
         <p class="d-inline d-lg-none text-transparent bg-clip-text bg-primary-gradient fs-5 pb-4"><%= "$#{ @product.price.to_s } / #{ t('product_show.unit') }" %></p>
-        <%= form_with do |f| %>
-           <div data-controller="counter" data-productPrice="<%= @product.price %>">
+        <%= form_with(model: @order, url: new_order_path, local: true, method: :get) do |f| %>
+          <%= f.hidden_field :product_id, value: @product.id %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <div data-controller="counter" data-productPrice="<%= @product.price %>">
             <div class="d-flex">
               <button type="button" class="bg-transparent rounded-start border border-dark" data-action="counter#decrement">-</button>
-              <%= f.number_field :quantity, class: 'border border-dark bg-transparent text-center w-25', value: 0, 'data-counter-target': 'quantity', readonly: true %>
+              <%= f.text_field :quantity, class: 'border border-dark bg-transparent text-center w-50px', value: 0, 'data-counter-target': 'quantity', readonly: true %>
               <button type="button" class="bg-transparent rounded-end border border-dark" data-action="counter#increment">+</button>
               <%= f.submit t('product_show.buy_sm'), class: 'text-light bg-primary-gradient border-0 rounded w-100 shadow py-lg-1 ms-5 d-lg-none'  %>
             </div>
+            <div class="invalid-feedback d-block">
+              <% @order.errors[:quantity].each do |message| %>
+                <div><%= message %></div>
+              <% end %>
+            </div>
             <div class="d-none d-lg-flex flex-column">
               <h4 class="fw-normal mt-5 mb-3"><%= t('product_show.customize_box') %></h4>
-                <%= render partial: 'additional', collection: @additionals %>
+                <% @additionals.each do |additional| %>
+                  <div class="form-check form-switch mb-2 d-flex justify-content-start ms-3">
+                    <h4>
+                      <%= f.check_box :additional_ids, { multiple: true, class: 'form-check-input', role: 'switch', 'data-action': 'change->counter#updateTotal', 'data-counter-target': 'checkbox', 'data-price': additional.price }, additional.id, nil %>
+                    </h4>
+                    <label class="form-check-label d-flex flex-column mt-1 ms-3">
+                      <p class="m-0"><%= additional.description %></p>
+                      <% if additional.price.zero? %>
+                        <p class="m-0 fs-12px fw-light"><%= t('product_show.no_additional_cost') %></p>
+                      <% else %>
+                        <p class="m-0 fs-12px fw-light"><%= "$#{ additional.price.to_s } #{ t('product_show.additional') }" %></p>
+                      <% end %>
+                    </label>
+                  </div>
+                <% end %>
                 <div class="mt-2">
                   <p class="text-secondary fw-light m-0"><%= t('product_show.more_customization') %></p>
                   <p class="fw-light text-primary"><%= t('product_show.executive') %></p>
