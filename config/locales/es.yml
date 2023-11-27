@@ -183,7 +183,7 @@ es:
       messages:
         wrong_length: es de largo incorrecto
         required: es un campo requerido
-        record_invalid: "El registro no es válido"
+        record_invalid: El registro no es válido
         blank: no puede estar en blanco
       models:
         order:

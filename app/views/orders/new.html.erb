@@ -72,9 +72,7 @@
 
             <div class="mx-5 mt-5 d-flex flex-column">
               <h5 class="fw-light"> <%= t('order.payment') %> </h5>
-              <%= turbo_frame_tag 'payment' do %>
-                <%= render partial: 'cards/select_card', locals: { cards: current_user.cards } %>
-              <% end %>
+              <%= render partial: 'cards/select_card', locals: { cards: current_user.cards } %>
             </div>
             <a class="text-primary mx-5" data-bs-toggle="modal" data-bs-target="#cardModal"><%= t('card.add') %></a>
             <div class="mx-5 mt-5">

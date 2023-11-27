@@ -1,6 +1,4 @@
 <%= turbo_stream.replace 'payment' do %>
-  <%= turbo_frame_tag 'payment' do %>
-    <%= render partial: 'select_card', locals: { cards: current_user.cards } %>
-  <% end %>
-  <%= javascript_include_tag 'modal' %>
+  <%= render partial: 'select_card', locals: { cards: current_user.cards } %>
+  <%= javascript_include_tag 'close_modal' %>
 <% end %>

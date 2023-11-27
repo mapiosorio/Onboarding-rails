@@ -1,6 +1,6 @@
-var myModal = document.getElementById('cardModal');
-if (myModal) {
-  myModal.classList.remove('show');
+const modal = document.getElementById('cardModal');
+if (modal) {
+  modal.classList.remove('show');
   const modalBackdrop = document.querySelector('.modal-backdrop');
   const bodyElement = document.body;
   modalBackdrop.remove();

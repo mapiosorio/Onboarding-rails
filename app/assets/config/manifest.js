@@ -1,3 +1,3 @@
 //= link_tree ../images
 //= link_tree ../builds
-//= link modal.js
+//= link close_modal.js

@@ -25,9 +25,7 @@
     <%= render 'product_summary', product: @product, additionals: @additionals %>
     <div class="mt-5 d-flex flex-column">
       <h5 class="fw-light"> <%= t('order.payment') %> </h5>
-      <%= turbo_frame_tag 'payment' do %>
-        <%= render partial: 'cards/select_card', locals: { cards: current_user.cards } %>
-      <% end %>
+      <%= render partial: 'cards/select_card', locals: { cards: current_user.cards } %>
     </div>
     <a class="text-primary" data-bs-toggle="modal" data-bs-target="#cardModal"><%= t('card.add') %></a>
     <div class="mt-5">
