@@ -60,7 +60,7 @@ RSpec.feature 'reset password' do
       click_button 'Cambiar mi contraseña'
 
       expect(page).to have_content('Contraseña es demasiada corta')
-      expect(page).to have_content('Password confirmation no coincide')
+      expect(page).to have_content('Las contraseñas no coinciden')
     end
   end
 

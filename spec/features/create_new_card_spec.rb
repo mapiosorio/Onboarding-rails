@@ -24,7 +24,7 @@ RSpec.describe 'create a new card', type: :feature do
 
       full_card_number = new_card_attributes[:number].to_s
       masked_card_number = '************' + full_card_number[-4, 4]
-      select  masked_card_number, from: 'order_card_id'
+      select masked_card_number, from: 'order_card_id'
     end
   end
 

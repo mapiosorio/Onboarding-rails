@@ -1,11 +1,12 @@
 require 'rails_helper'
+require 'devise'
 
 RSpec.feature 'user edit personal information', type: :feature do
   let!(:user) { create(:user) }
 
   context 'with logged user' do
     it 'changes the information' do
-      login_as(user)
+      sign_in user
       visit edit_user_registration_path
 
       attach_file('Foto de perfil', File.absolute_path('app/assets/images/profile_picture.png'))

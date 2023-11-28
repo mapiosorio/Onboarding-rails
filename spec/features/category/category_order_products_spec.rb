@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'devise'
 
 RSpec.describe 'order products', type: :feature do
   let!(:user) { create(:user) }
@@ -7,7 +8,7 @@ RSpec.describe 'order products', type: :feature do
 
   context 'with a specific category' do
     it 'shows the products associated with the category ordered by price in ascending order' do
-      login_as(user)
+      sign_in user
       sorted_products_asc = category.products.order(price: :asc)
       visit filter_order_category_path(category, sort: 'asc')
 
@@ -15,7 +16,7 @@ RSpec.describe 'order products', type: :feature do
     end
 
     it 'shows the products associated with the category ordered by price in descending order' do
-      login_as(user)
+      sign_in user
       sorted_products_desc = category.products.order(price: :desc)
       visit filter_order_category_path(category, sort: 'desc')
 

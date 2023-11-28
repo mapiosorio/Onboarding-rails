@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'devise'
 
 RSpec.describe 'filter products', type: :feature do
   let(:user) { create(:user) }
@@ -8,7 +9,7 @@ RSpec.describe 'filter products', type: :feature do
 
   context 'with a filter' do
     it 'shows the products with the filter' do
-      login_as(user)
+      sign_in user
       vegan_sharing_products = category.products
       visit filter_order_category_path(category, sharing: 'true')
 
@@ -24,7 +25,7 @@ RSpec.describe 'filter products', type: :feature do
 
   context 'with more than one filter' do
     it 'shows products that match the filters' do
-      login_as(user)
+      sign_in user
       vegan_sharing_products = category.products
       visit filter_order_category_path(category, sharing: 'true', vegan: 'true')
 
