@@ -22,7 +22,7 @@ RSpec.describe 'create a new order', type: :feature do
       fill_in 'Razón Social', with: new_order_attributes[:company_name]
 
       full_card_number = card.number.to_s
-      masked_card_number = '************' + full_card_number[-4..-1]
+      masked_card_number = '************' + full_card_number[-4, 4]
       select masked_card_number, from: 'order_card_id'
       click_button 'COMPRAR'
 
@@ -37,14 +37,14 @@ RSpec.describe 'create a new order', type: :feature do
 
         click_button 'COMPRAR'
 
-        expect(page).to have_content('Tarjeta es un campo requerido')
-        expect(page).to have_content('Nombre y apellido no puede estar en blanco')
-        expect(page).to have_content('La fecha de entrega no puede estar en blanco')
-        expect(page).to have_content('El horario de entrega no puede estar en blanco')
-        expect(page).to have_content('El Número de contacto no puede estar en blanco')
-        expect(page).to have_content('El RUT no puede estar en blanco')
-        expect(page).to have_content('La Razón Social no puede estar en blanco')
-        expect(page).to have_content('la Dirección de entrega no puede estar en blanco')
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.card') } #{ I18n.t('activerecord.errors.messages.required') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.recipient_name') } #{ I18n.t('activerecord.errors.messages.blank') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.delivery_date') } #{ I18n.t('activerecord.errors.messages.blank') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.delivery_time') } #{ I18n.t('activerecord.errors.messages.blank') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.recipient_phone_number') } #{ I18n.t('activerecord.errors.messages.blank') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.rut') } #{ I18n.t('activerecord.errors.messages.blank') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.company_name') } #{ I18n.t('activerecord.errors.messages.blank') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.delivery_direction') } #{ I18n.t('activerecord.errors.messages.blank') }")
       end
     end
   end
@@ -68,7 +68,7 @@ RSpec.describe 'create a new order', type: :feature do
       fill_in 'Razón Social', with: new_order_attributes[:company_name]
 
       full_card_number = card.number.to_s
-      masked_card_number = '************' + full_card_number[-4..-1]
+      masked_card_number = '************' + full_card_number[-4, 4]
       select masked_card_number, from: 'order_card_id'
       click_button 'COMPRAR'
 
@@ -84,11 +84,11 @@ RSpec.describe 'create a new order', type: :feature do
 
         click_button 'VALIDAR COMPRA'
 
-        expect(page).to have_content('La fecha de entrega no puede estar en blanco')
-        expect(page).to have_content('El horario de entrega no puede estar en blanco')
-        expect(page).to have_content('El Número de contacto no puede estar en blanco')
-        expect(page).to have_content('la Dirección de entrega no puede estar en blanco')
-        expect(page).to have_content('Nombre y apellido no puede estar en blanco')
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.recipient_name') } #{ I18n.t('activerecord.errors.messages.blank') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.delivery_date') } #{ I18n.t('activerecord.errors.messages.blank') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.delivery_time') } #{ I18n.t('activerecord.errors.messages.blank') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.recipient_phone_number') } #{ I18n.t('activerecord.errors.messages.blank') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.delivery_direction') } #{ I18n.t('activerecord.errors.messages.blank') }")
       end
 
       it 'shows validation errors in additional_information_new_order_path' do
@@ -111,9 +111,9 @@ RSpec.describe 'create a new order', type: :feature do
 
         click_button 'COMPRAR'
 
-        expect(page).to have_content('Tarjeta es un campo requerido')
-        expect(page).to have_content('El RUT no puede estar en blanco')
-        expect(page).to have_content('La Razón Social no puede estar en blanco')
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.card') } #{ I18n.t('activerecord.errors.messages.required') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.rut') } #{ I18n.t('activerecord.errors.messages.blank') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.company_name') } #{ I18n.t('activerecord.errors.messages.blank') }")
       end
     end
   end

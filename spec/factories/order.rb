@@ -14,8 +14,8 @@ FactoryBot.define do
     personalization_message { Faker::Lorem.sentence }
     delivery_direction { Faker::Address.full_address }
     re_delivery { Faker::Boolean.boolean }
-    user { association(:user) }
-    product { association(:product) }
-    card { association(:card) }
+    user
+    product
+    card
   end
 end

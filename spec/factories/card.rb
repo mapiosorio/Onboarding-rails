@@ -4,6 +4,6 @@ FactoryBot.define do
     expiration_date { Faker::Date.between(from: Date.today, to: 10.years.from_now) }
     cardholder { Faker::Name.name }
     cvv { Faker::Number.number(digits: 3) }
-    user { association(:user) }
+    user
   end
 end

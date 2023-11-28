@@ -23,7 +23,7 @@ RSpec.describe 'create a new card', type: :feature do
       click_button 'CONFIRMAR'
 
       full_card_number = new_card_attributes[:number].to_s
-      masked_card_number = '************' + full_card_number[-4..-1]
+      masked_card_number = '************' + full_card_number[-4, 4]
       select  masked_card_number, from: 'order_card_id'
     end
   end
@@ -32,12 +32,12 @@ RSpec.describe 'create a new card', type: :feature do
     it 'shows validation errors' do
       click_button 'CONFIRMAR'
 
-      expect(page).to have_content('El número de la tarjeta no puede estar en blanco')
-      expect(page).to have_content('Fecha de vencimientos no puede estar en blanco')
-      expect(page).to have_content('El nombre del titular no puede estar en blanco')
-      expect(page).to have_content('Cvv no puede estar en blanco')
-      expect(page).to have_content('Cvv es de largo incorrecto')
-      expect(page).to have_content('El número de la tarjeta es de largo incorrecto')
+      expect(page).to have_content("#{ I18n.t('activerecord.attributes.card.number') } #{ I18n.t('activerecord.errors.messages.blank') }")
+      expect(page).to have_content("#{ I18n.t('activerecord.attributes.card.expiration_date') } #{ I18n.t('activerecord.errors.messages.blank') }")
+      expect(page).to have_content("#{ I18n.t('activerecord.attributes.card.cardholder') } #{ I18n.t('activerecord.errors.messages.blank') }")
+      expect(page).to have_content("#{ I18n.t('activerecord.attributes.card.cvv') } #{ I18n.t('activerecord.errors.messages.blank') }")
+      expect(page).to have_content("#{ I18n.t('activerecord.attributes.card.cvv') } #{ I18n.t('activerecord.errors.messages.wrong_length') }")
+      expect(page).to have_content("#{ I18n.t('activerecord.attributes.card.number') } #{ I18n.t('activerecord.errors.messages.wrong_length') }")
     end
   end
 end

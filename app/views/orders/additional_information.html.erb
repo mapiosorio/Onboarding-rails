@@ -20,14 +20,14 @@
     <%= f.hidden_field :recipient_phone_number, value: @order.recipient_phone_number %>
     <%= f.hidden_field :re_delivery, value: @order.re_delivery %>
     <%= f.hidden_field :delivery_direction, value: @order.delivery_direction %>
-    <%= render "devise/shared/error_messages", resource: @order %>
+    <%= render 'devise/shared/error_messages', resource: @order %>
     <h2 class="bg-primary-gradient bg-clip-text text-transparent"><%= t('order.order_summary') %></h2>
     <%= render 'product_summary', product: @product, additionals: @additionals %>
     <div class="mt-5 d-flex flex-column">
       <h5 class="fw-light"> <%= t('order.payment') %> </h5>
       <%= render partial: 'cards/select_card', locals: { cards: current_user.cards } %>
     </div>
-    <a class="text-primary" data-bs-toggle="modal" data-bs-target="#cardModal"><%= t('card.add') %></a>
+    <a class="text-primary" data-bs-toggle="modal" data-bs-target="#card-modal"><%= t('card.add') %></a>
     <div class="mt-5">
       <h5 class="fw-light"><%= t('order.billing.title') %></h5>
       <%= f.text_field :rut, class: 'border-0 border-bottom border-secondary w-100 bg-transparent pb-2', placeholder: t('order.billing.rut') %>
