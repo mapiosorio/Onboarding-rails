@@ -1,0 +1,25 @@
+<%= turbo_frame_tag 'new_card' do %>
+  <%= form_with(model: card, url: cards_path) do |f| %>
+   <%= render 'devise/shared/error_messages', resource: card %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="d-flex flex-column mt-3 mt-lg-0">
+      <%= f.label :number, t('card.number'), class: 'text-secondary' %>
+      <%= f.text_field :number, class: 'border-0 border-bottom border-secondary w-100 bg-transparent' %>
+    </div>
+    <div class="d-flex flex-column mt-3">
+      <%= f.label :cardholder, t('card.cardholder'), class: 'text-secondary' %>
+      <%= f.text_field :cardholder, class: 'border-0 border-bottom border-secondary w-100 bg-transparent' %>
+    </div>
+    <div class="d-flex flex-column mt-3">
+      <%= f.label :expiration_date, t('card.expiration_date'), class: 'text-secondary' %>
+      <%= f.date_field :expiration_date, class: 'border-0 border-bottom border-secondary w-100 bg-transparent' %>
+    </div>
+    <div class="d-flex flex-column mt-3">
+      <%= f.label :cvv, t('card.cvv'), class: 'text-secondary' %>
+      <%= f.number_field :cvv, class: 'border-0 border-bottom border-secondary w-100 bg-transparent' %>
+    </div>
+    <div class="d-flex flex-column mt-5">
+      <%= f.submit t('card.confirm'), class: 'text-light w-100 bg-primary-gradient border-0 rounded shadow py-2'%>
+    </div>
+  <% end %>
+<% end %>

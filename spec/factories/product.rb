@@ -3,20 +3,22 @@ FactoryBot.define do
     description { Faker::Food.description }
     name { Faker::Food.dish }
     price { Faker::Commerce.price }
-    provider { association(:provider) }
-    category { association(:category) }
+    provider
+    category
     vegan { Faker::Boolean.boolean }
     sharing { Faker::Boolean.boolean }
     gluten_free { Faker::Boolean.boolean }
     sugar_free { Faker::Boolean.boolean }
     finger_food { Faker::Boolean.boolean }
     rating { Faker::Number.decimal(l_digits: 1, r_digits: 2) }
-    transient do
-      additionals_count { 3 }
-    end
+    factory :product_with_additionals do
+      transient do
+        additionals_count { 3 }
+      end
 
-    after(:create) do |product, evaluator|
-      create_list(:additional, evaluator.additionals_count, product: product)
+      after(:create) do |product, evaluator|
+        create_list(:additional, evaluator.additionals_count, products: [product])
+      end
     end
   end
 end

@@ -30,6 +30,16 @@ es:
     buy: COMPRAR
     buy_sm: COMPRAR AHORA
     back: Volver
+  card:
+    title: Ingresa los datos de la tarjeta
+    number: Número de la tarjeta
+    cardholder: Nombre del titular
+    expiration_date: Fecha de vencimiento
+    cvv: CVV
+    confirm: CONFIRMAR
+    close: Cerrar
+    add: Añadir una tarjeta
+    select: Seleccione una tarjeta
   order:
     billing:
       title: Información de facturacion
@@ -164,8 +174,16 @@ es:
         rut: El RUT
         company_name: La Razón Social
         delivery_direction: la Dirección de entrega
+        card: Tarjeta
+      card:
+        number: El número de la tarjeta
+        expiration_date: Fecha de vencimientos
+        cardholder: El nombre del titular
+        cvv: Cvv
     errors:
       messages:
+        wrong_length: es de largo incorrecto
+        required: es un campo requerido
         record_invalid: El registro no es válido
         blank: no puede estar en blanco
       models:

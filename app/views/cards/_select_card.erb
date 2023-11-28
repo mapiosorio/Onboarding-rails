@@ -1,0 +1,10 @@
+<%= turbo_frame_tag 'payment' do %>
+  <select name="order[card_id]" id="order_card_id">
+    <option><%= t('card.select') %></option>
+    <% cards.each do |card| %>
+      <option value="<%= card.id %>">
+        <%= masked_card_number(card.number) %>
+      </option>
+    <% end %>
+  </select>
+<% end %>
