@@ -110,6 +110,8 @@ es:
       surprise_delivery_info: Si el envío no es sorpresa, podríamos contactar al destinatario de la entrega.
   welcome: "¡Bienvenido a Plan IT!"
   greeting: "¡Hola, otra vez!"
+  all_products: Todos los productos
+  no_products: No se encontraron productos
   categories: Categorias
   results: resultados
   confirm_changes: Para confirmar los cambios

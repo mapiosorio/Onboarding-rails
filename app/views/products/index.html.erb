@@ -1,0 +1,11 @@
+<%= render 'categories/shared/navbar' %>
+<div class="bg-custom-gray pt-5">
+  <div class="mx-lg-5 px-lg-5 mx-3 mt-lg-5 pt-lg-5">
+    <h1 class="mt-4 text-lg-start text-center"><%= t('all_products') %></h1>
+    <%= render 'products', products: @products, pagy: @pagy %>
+    <%= render 'categories/shared/footer' %>
+    <%= render 'devise/shared/footer' %>
+  </div>
+</div>
+<%= render 'devise/shared/help' %>
+
