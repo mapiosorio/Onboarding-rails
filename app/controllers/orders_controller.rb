@@ -24,17 +24,14 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @additionals = Additional.where(id: @order.additional_ids)
+    return if @order.save
 
-    if @order.save
-      redirect_to order_completed_orders_path
-    else
-      @card = Card.new
-      @cards = current_user.cards
-      @product = Product.find(@order.product_id)
-      referer_path = URI.parse(request.referer).path
-      view = referer_path == additional_information_new_order_path ? :additional_information : :new
-      render view, status: :unprocessable_entity
-    end
+    @card = Card.new
+    @cards = current_user.cards
+    @product = Product.find(@order.product_id)
+    referer_path = URI.parse(request.referer).path
+    view = referer_path == additional_information_new_order_path ? :additional_information : :new
+    render view, status: :unprocessable_entity
   end
 
   private
