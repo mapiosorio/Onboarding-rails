@@ -8,7 +8,6 @@ RSpec.describe 'select quantity of products', type: :feature do
 
   context 'with a specific product' do
     it 'lets the user select the quantity' do
-      page.driver.browser.manage.window.resize_to(1400, 1000)
       sign_in user
       visit product_path(product)
 

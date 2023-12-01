@@ -1,6 +1,7 @@
 ActiveAdmin.register Order do
   permit_params :quantity, :total, :subtotal, :taxes, :surprise_delivery, :delivery_date, :delivery_time,
-                :recipient_name, :recipient_phone_number, :rut, :company_name, :personalization_message, :delivery_direction, :re_delivery, :user_id, :product_id, :card_id, additional_ids: []
+                :recipient_name, :recipient_phone_number, :rut, :company_name, :personalization_message,
+                :delivery_direction, :re_delivery, :user_id, :product_id, :card_id, additional_ids: []
 
   index do
     selectable_column
