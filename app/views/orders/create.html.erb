@@ -1,0 +1,15 @@
+<%= render 'categories/shared/navbar' %>
+<div class="bg-custom-gray pt-lg-5 mt-lg-5">
+  <div class="mx-lg-5 px-lg-5 mx-3 mt-lg-5 pt-lg-5 pt-4">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+      <div class="d-flex justify-content-cente align-items-center flex-column col-lg-4 col-9 col-md-8 mt-5 pt-5 mb-5 pb-5">
+        <%= image_tag('order_logo.png', alt: 'PlanIT logo', class: 'mb-5 mb-lg-1') %>
+        <h2 class="bg-clip-text text-transparent bg-primary-gradient fw-normal"><%= t('order.success') %></h2>
+        <p class="text-center mb-3 mb-lg-1 fs-lg-12px"><%= t('order.notification') %></p>
+        <%= link_to t('links.start'), root_path, class: 'btn btn-outline-dark px-5 mt-5 py-2 py-lg-1 w-lg-100 shadow' %>
+      </div>
+    </div>
+    <%= render 'categories/shared/footer' %>
+    <%= render 'devise/shared/footer' %>
+  </div>
+</div>

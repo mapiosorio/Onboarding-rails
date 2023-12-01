@@ -55,6 +55,8 @@ es:
     taxes: IVA
     payment: Método de Pago
     color: Color:Azul
+    success: Pedido realizado
+    notification: Te enviaremos una notificación una vez que el servicio esté confirmado.
     with_personalization: Con tarjeta personalizada
     order_summary: Resumen de compra
     company_logo: Adjuntar logo de la Empresa
@@ -118,6 +120,7 @@ es:
       asc_order: Precio ascendente
       desc_order: Precio descendente
   links:
+    start: VOLVER AL INICIO
     login: "Inicia sesión aquí."
     register: "¡Regístrate aquí!"
     forgot_password: "¿Olvidaste tu contraseña?"

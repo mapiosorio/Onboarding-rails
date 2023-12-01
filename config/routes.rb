@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :orders, only: %i[new create] do
     get :additional_information, on: :new
   end
+
   resources :cards, only: [:create]
 
   root to: 'categories#index'

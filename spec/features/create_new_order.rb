@@ -26,7 +26,7 @@ RSpec.describe 'create a new order', type: :feature do
       select masked_card_number, from: 'order_card_id'
       click_button 'COMPRAR'
 
-      expect(page).to have_current_path(root_path)
+      expect(page).to have_content(I18n.t('order.success'))
     end
 
     context 'with all fields blank' do
@@ -72,7 +72,7 @@ RSpec.describe 'create a new order', type: :feature do
       select masked_card_number, from: 'order_card_id'
       click_button 'COMPRAR'
 
-      expect(page).to have_current_path(root_path)
+      expect(page).to have_content(I18n.t('order.success'))
     end
 
     context 'with all fields blank' do
