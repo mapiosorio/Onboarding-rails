@@ -1,0 +1,27 @@
+<%= render 'categories/shared/navbar' %>
+<div class="bg-custom-gray pt-lg-5 mt-lg-5">
+  <div class="mx-lg-5 px-lg-5 mx-3 mt-lg-5 pt-lg-5 pt-4">
+    <h3 class="bg-clip-text text-transparent bg-primary-gradient"><%= I18n.t('order.index.count', order_amount: @orders.count) %></h3>
+    <% @orders.each do |order| %>
+      <div class="bg-white py-3 my-3 px-3">
+        <p class="mt-4 fs-12px ms-lg-5">
+          <%= "#{ t('order.index.created') } #{ l(order.created_at) }" %>
+        </p>
+        <%= render 'product_summary', product: order.product, additionals: order.additionals %>
+        <div class="ms-lg-5">
+          <p class="mt-3">
+            <%= I18n.t('order.index.summary', recipient_name: order.recipient_name, delivery_date: l(order.delivery_date), delivery_time: order.delivery_time.strftime('%H:%M'), delivery_direction: order.delivery_direction) %>
+          </p>
+          <p class="mt-3">
+            <%= I18n.t('order.index.amount_product', product_name: order.product.name, quantity: order.quantity) %>
+          </p>
+          <h5 class="mt-4"><%= t('order.index.payment_info') %></h5>
+          <p><%= I18n.t('order.index.total_to_pay', total_amount: order.total) %></p>
+          <p><%= I18n.t('order.index.card_used', masked_card_number: masked_card_number(order.card.number)) %></p>
+        </div>
+      </div>
+    <% end %>
+    <%= render 'categories/shared/footer' %>
+    <%= render 'devise/shared/footer' %>
+  </div>
+</div>

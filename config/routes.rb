@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get :filter_order, on: :member
   end
   resources :products, only: [:show]
-  resources :orders, only: %i[new create] do
+  resources :orders, only: %i[new create index] do
     get :additional_information, on: :new
   end
 

@@ -1,4 +1,8 @@
 class OrdersController < ApplicationController
+  def index
+    @orders = Order.where(user_id: current_user.id)
+  end
+
   def new
     @order = Order.new(order_params)
     @product = Product.find(@order.product_id)
