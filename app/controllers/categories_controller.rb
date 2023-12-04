@@ -1,8 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
 
-  def index; end
-
   def show
     @category = Category.find(params[:id])
     @products = @category.products
