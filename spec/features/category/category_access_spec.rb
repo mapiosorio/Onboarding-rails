@@ -1,11 +1,12 @@
 require 'rails_helper'
+require 'devise'
 
 RSpec.describe 'access root path', type: :feature do
   let!(:user) { create(:user) }
 
   context 'with authenticated user' do
     it 'redirects to root path' do
-      login_as(user)
+      sign_in user
       visit root_path
 
       expect(page).to have_current_path(root_path)

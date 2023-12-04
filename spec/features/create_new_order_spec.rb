@@ -37,8 +37,8 @@ RSpec.describe 'create a new order', type: :feature do
 
         click_button 'COMPRAR'
 
-        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.card') } #{ I18n.t('activerecord.errors.messages.required') }")
         expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.recipient_name') } #{ I18n.t('activerecord.errors.messages.blank') }")
+        expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.card') } #{I18n.t('activerecord.errors.messages.required') }")
         expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.delivery_date') } #{ I18n.t('activerecord.errors.messages.blank') }")
         expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.delivery_time') } #{ I18n.t('activerecord.errors.messages.blank') }")
         expect(page).to have_content("#{ I18n.t('activerecord.attributes.order.recipient_phone_number') } #{ I18n.t('activerecord.errors.messages.blank') }")

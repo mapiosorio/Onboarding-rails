@@ -13,6 +13,7 @@ RSpec.feature 'user registration', type: :feature do
       fill_in 'Email', with: new_user_attributes[:email]
       fill_in 'Contraseña', with: new_user_attributes[:password]
       fill_in 'Nombre de su empresa', with: new_user_attributes[:company]
+      fill_in 'Cargo en la empresa', with: new_user_attributes[:position]
       click_button 'REGISTRARSE'
 
       expect(page).to have_current_path(root_path)
