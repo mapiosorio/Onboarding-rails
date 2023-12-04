@@ -35,7 +35,7 @@
             </div>
           </div>
         </nav>
-        <%= form_tag(search_products_path, class: 'position-relative d-none d-lg-flex w-100', data: { turbo: (request.path == (category_path(@category.id)  if defined?(@category) )) }) do %>
+        <%= form_tag(search_products_path, class: 'position-relative d-none d-lg-flex w-100', data: { turbo: (request.path == (category_path(@category.id) if defined?(@category) )) }) do %>
           <%= hidden_field_tag :category_id, @category.id if defined?(@category) && @category.present? %>
           <%= text_field_tag :search, params[:search], class: 'form-control rounded-4 w-100 text-center mx-3', placeholder: '&#x1F375; Food Box &nbsp; | &nbsp; $1.000 - $2.000'.html_safe %>
           <%= button_tag(type: 'submit', class: 'btn btn-custom-light-blue rounded-5 position-absolute end-0 top-0 px-2 py-1 me-3 mt-1 opacity-75') do %>
@@ -44,7 +44,7 @@
         <% end %>
       </div>
     </div>
-    <%= form_tag(search_products_path, class: 'position-relative d-flex d-lg-none mt-4 pb-4 pb-lg-0 ms-3',  data: { turbo: (request.path == (category_path(@category.id)  if defined?(@category) )) }) do %>
+    <%= form_tag(search_products_path, class: 'position-relative d-flex d-lg-none mt-4 pb-4 pb-lg-0 ms-3',  data: { turbo: (request.path == (category_path(@category.id) if defined?(@category) )) }) do %>
       <%= hidden_field_tag :category_id, @category.id if defined?(@category) && @category.present? %>
       <%= text_field_tag(:search, params[:search], class: 'form-control rounded-5 w-100 text-center', placeholder: '&nbsp; &nbsp; &nbsp; Box de regalos'.html_safe, type: 'search') %>
       <%= button_tag(type: 'submit', class: 'btn btn-custom-light-blue rounded-5 position-absolute start-25 ms-1 top-0 px-2 py-1 mt-1 opacity-75') do %>
