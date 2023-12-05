@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :categories, only: %i[index show] do
     get :filter_order, on: :member
+    post :filter, on: :member
   end
 
   resources :products, only: [:show] do

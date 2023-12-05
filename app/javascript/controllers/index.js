@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import CounterController from "./counter_controller"
 application.register("counter", CounterController)
+
+import FilterController from "./filter_controller"
+application.register("filter", FilterController)

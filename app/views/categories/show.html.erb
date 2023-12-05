@@ -9,23 +9,28 @@
     </div>
     <div class="d-lg-flex d-none flex-column justify-content-between">
       <div class="d-flex justify-content-between">
-        <div class="d-flex gap-5">
+        <div class="d-flex gap-5" data-controller="filter">
           <div class="d-flex gap-xl-3 gap-1 mb-4 me-3">
-            <%= filter_link(:sharing, t('home_page.links.sharing')) %>
-            <%= filter_link(:vegan, t('home_page.links.vegan')) %>
+            <input type="checkbox" class="btn-check" id="sharing" data-action="change->filter#filterProducts" data-filter-target="checkbox" autocomplete="off">
+            <label class="btn btn-outline-dark px-xl-4" for="sharing"><%= t('home_page.links.sharing') %></label><br>
+            <input type="checkbox" class="btn-check" id="vegan" data-action="change->filter#filterProducts" data-filter-target="checkbox" autocomplete="off">
+            <label class="btn btn-outline-dark px-xl-4" for="vegan"><%= t('home_page.links.vegan') %></label><br>
           </div>
           <div class="d-flex gap-xl-3 gap-1 mb-4 ms-5">
-            <%= filter_link(:sugar_free, t('home_page.links.sugar_free')) %>
-            <%= filter_link(:gluten_free, t('home_page.links.gluten_free')) %>
-            <%= filter_link(:finger_food, t('home_page.links.finger_foods')) %>
+            <input type="checkbox" class="btn-check" id="sugar_free" data-action="change->filter#filterProducts" data-filter-target="checkbox" autocomplete="off">
+            <label class="btn btn-outline-dark px-xl-4" for="sugar_free"><%= t('home_page.links.sugar_free') %></label><br>
+            <input type="checkbox" class="btn-check" id="gluten_free" data-action="change->filter#filterProducts" data-filter-target="checkbox" autocomplete="off">
+            <label class="btn btn-outline-dark px-xl-4" for="gluten_free"><%= t('home_page.links.gluten_free') %></label><br>
+            <input type="checkbox" class="btn-check" id="finger_food" data-action="change->filter#filterProducts" data-filter-target="checkbox" autocomplete="off">
+            <label class="btn btn-outline-dark px-xl-4" for="finger_food"><%= t('home_page.links.finger_foods') %></label><br>
           </div>
         </div>
        <div class="dropdown">
           <button class="btn fw-light dropdown-toggle" type="button" id="order" data-bs-toggle="dropdown" aria-expanded="false"><%= t('home_page.order_by') %></button>
           <ul class="dropdown-menu">
-            <%= link_to t('home_page.links.default_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food]), class: 'dropdown-item' %>
-            <%= link_to t('home_page.links.asc_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: 'asc'), class: 'dropdown-item' %>
-            <%= link_to t('home_page.links.desc_order'), filter_order_category_path(sharing: params[:sharing], vegan: params[:vegan], sugar_free: params[:sugar_free], gluten_free: params[:gluten_free], finger_food: params[:finger_food], sort: 'desc'), class: 'dropdown-item' %>
+            <%= link_to t('home_page.links.default_order'), category_path(@category.id), class: 'dropdown-item' %>
+            <%= link_to t('home_page.links.asc_order'), filter_order_category_path(sort: 'asc'), class: 'dropdown-item' %>
+            <%= link_to t('home_page.links.desc_order'), filter_order_category_path(sort: 'desc'), class: 'dropdown-item' %>
           </ul>
         </div>
       </div>
