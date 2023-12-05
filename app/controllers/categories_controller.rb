@@ -10,20 +10,31 @@ class CategoriesController < ApplicationController
   def filter_order
     @category = Category.find(params[:id])
     @products = @category.products
-    apply_filters
     apply_sorting
     @pagy, @products = pagy(@products)
     render 'show'
   end
 
-  private
+  def filter
+    request_data = JSON.parse(request.body.read)
+    category_id = request_data['categoryId']
+    filter_params = request_data['filterParams']
+    sort_value = request_data['sortValue']
 
-  def apply_filters
-    @filter_params = params.permit(:sharing, :vegan, :sugar_free, :gluten_free, :finger_food)
-    @filter_params.each do |param, value|
-      @products = @products.where(param) if value == 'true'
+    @category = Category.find(category_id)
+    @products = @category.products
+
+    filter_params.each do |param, value|
+      @products = @products.where(param => true) if value
     end
+
+    @products = @products.order(price: sort_value.to_sym) if sort_value.present?
+
+    @pagy, @products = pagy(@products)
+    render turbo_stream: turbo_stream.replace('products', partial: 'products/products', locals: { products: @products, pagy: @pagy })
   end
+
+  private
 
   def apply_sorting
     sort_option = params[:sort]
