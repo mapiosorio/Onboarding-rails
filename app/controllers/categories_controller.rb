@@ -17,20 +17,18 @@ class CategoriesController < ApplicationController
 
   def filter
     request_data = JSON.parse(request.body.read)
-    categoryId = request_data['categoryId']
-    filterParams = request_data['filterParams']
-    sortValue = request_data['sortValue']
+    category_id = request_data['categoryId']
+    filter_params = request_data['filterParams']
+    sort_value = request_data['sortValue']
 
-    @category = Category.find(categoryId)
+    @category = Category.find(category_id)
     @products = @category.products
 
-    filterParams.each do |param, value|
+    filter_params.each do |param, value|
       @products = @products.where(param => true) if value
     end
 
-    if sortValue.present?
-      @products = @products.order(price: sortValue.to_sym)
-    end
+    @products = @products.order(price: sort_value.to_sym) if sort_value.present?
 
     @pagy, @products = pagy(@products)
     render turbo_stream: turbo_stream.replace('products', partial: 'products/products', locals: { products: @products, pagy: @pagy })
